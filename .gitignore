@@ -1,3 +1,7 @@
+/Build
+/Publish
+/Distribution
+/nant-*.log*
 
 #ignore thumbnails created by windows
 Thumbs.db
