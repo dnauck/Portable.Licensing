@@ -45,6 +45,18 @@
     <Compile Include="Model\License.cs" />
     <Compile Include="Model\LicenseType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Cryptography\AsymmetricAlgorithm.cs" />
+    <Compile Include="Security\Cryptography\CryptographicException.cs" />
+    <Compile Include="Security\Cryptography\ElGamal\ElGamal.cs" />
+    <Compile Include="Security\Cryptography\ElGamal\ElGamalAbstractCipher.cs" />
+    <Compile Include="Security\Cryptography\ElGamal\ElGamalDecryptor.cs" />
+    <Compile Include="Security\Cryptography\ElGamal\ElGamalEncryptor.cs" />
+    <Compile Include="Security\Cryptography\ElGamal\ElGamalKeyStruct.cs" />
+    <Compile Include="Security\Cryptography\ElGamal\ElGamalManaged.cs" />
+    <Compile Include="Security\Cryptography\ElGamal\ElGamalParameters.cs" />
+    <Compile Include="Security\Cryptography\ElGamal\ElGamalSignature.cs" />
+    <Compile Include="Security\Cryptography\KeySizes.cs" />
+    <Compile Include="Security\Cryptography\Math\BigInteger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
