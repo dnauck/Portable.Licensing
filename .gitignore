@@ -2,6 +2,7 @@
 /Publish
 /Distribution
 /nant-*.log*
+packages/
 
 #ignore thumbnails created by windows
 Thumbs.db
