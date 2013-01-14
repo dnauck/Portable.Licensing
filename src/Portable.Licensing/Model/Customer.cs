@@ -34,17 +34,26 @@ namespace Portable.Licensing.Model
     {
         private static readonly XNamespace ns = "http://schema.nauck-it.de/portable.licensing#customer";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Customer"/> class.
+        /// </summary>
         public Customer()
             : base(ns + "Customer")
         {
         }
 
+        /// <summary>
+        /// Gets or sets the Name of this <see cref="Customer"/>.
+        /// </summary>
         public new string Name
         {
             get { return Element(ns + "Name").Value; }
             set { Add(new XElement(ns + "Name", value)); }
         }
 
+        /// <summary>
+        /// Gets or sets the Email of this <see cref="Customer"/>.
+        /// </summary>
         public string Email
         {
             get { return Element(ns + "Email").Value; }
