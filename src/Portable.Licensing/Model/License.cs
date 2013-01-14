@@ -25,6 +25,7 @@
 
 using System;
 using System.Globalization;
+using System.Text;
 using System.Xml.Linq;
 
 namespace Portable.Licensing.Model
@@ -90,6 +91,70 @@ namespace Portable.Licensing.Model
         {
             get { return DateTime.ParseExact(Element(ns + "Expiration").Value, "r", CultureInfo.InvariantCulture); }
             set { Add(new XElement(ns + "Expiration", value.ToUniversalTime().ToString("r", CultureInfo.InvariantCulture))); }
+        }
+
+        /// <summary>
+        /// Gets the digital signature of this license.
+        /// </summary>
+        /// <remarks>Use the <see cref="License.Sign"/> method to compute a signature.</remarks>
+        public string Signature
+        {
+            get { return Element(ns + "Signature").Value; }
+        }
+
+        /// <summary>
+        /// Compute a signature and sign this <see cref="License"/> with the provided key.
+        /// </summary>
+        /// <param name="privateKey">The private key in xml string format to compute the signature.</param>
+        public void Sign(string privateKey)
+        {
+            var signTag = Element(ns + "Signature") ?? new XElement(ns + "Signature");
+
+            try
+            {
+                if (signTag.Parent != null)
+                    signTag.Remove();
+
+                using (var e = new Security.Cryptography.ElGamal.ElGamalManaged())
+                {
+                    e.FromXmlString(privateKey);
+                    var signature = e.Sign(Encoding.UTF8.GetBytes(ToString(SaveOptions.DisableFormatting)));
+                    signTag.Value = Convert.ToBase64String(signature);
+                }
+            }
+            finally
+            {
+                Add(signTag);
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the <see cref="License.Signature"/> property verifies for the specified key.
+        /// </summary>
+        /// <param name="publicKey">The public key in xml string format to verify the <see cref="License.Signature"/>.</param>
+        /// <returns>true if the <see cref="License.Signature"/> verifies; otherwise false.</returns>
+        public bool VerifySignature(string publicKey)
+        {
+            var signTag = Element(ns + "Signature");
+            
+            if (signTag == null)
+                return false;
+
+            try
+            {
+                signTag.Remove();
+
+                using (var e = new Security.Cryptography.ElGamal.ElGamalManaged())
+                {
+                    e.FromXmlString(publicKey);
+                    return e.VerifySignature(Encoding.UTF8.GetBytes(ToString(SaveOptions.DisableFormatting)),
+                                             Convert.FromBase64String(signTag.Value));
+                }
+            }
+            finally
+            {
+                Add(signTag);
+            }
         }
     }
 }
