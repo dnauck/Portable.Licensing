@@ -72,6 +72,15 @@ namespace Portable.Licensing.Model
         }
 
         /// <summary>
+        /// Gets or sets the <see cref="ProductFeatures"/> of this <see cref="License"/>.
+        /// </summary>
+        public ProductFeatures ProductFeatures
+        {
+            get { return Element("ProductFeatures") as ProductFeatures; }
+            set { Add(value); }
+        }
+
+        /// <summary>
         /// Gets or sets the <see cref="Customer"/> of this <see cref="License"/>.
         /// </summary>
         public Customer Customer
