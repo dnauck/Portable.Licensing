@@ -55,6 +55,7 @@
     <Compile Include="Security\Cryptography\ElGamal\ElGamalManaged.cs" />
     <Compile Include="Security\Cryptography\ElGamal\ElGamalParameters.cs" />
     <Compile Include="Security\Cryptography\ElGamal\ElGamalSignature.cs" />
+    <Compile Include="Security\Cryptography\KeyGenerator.cs" />
     <Compile Include="Security\Cryptography\KeySizes.cs" />
     <Compile Include="Security\Cryptography\Math\BigInteger.cs" />
   </ItemGroup>
