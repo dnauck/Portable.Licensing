@@ -25,16 +25,15 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
 
 namespace Portable.Licensing.Model
 {
     /// <summary>
     /// Represents a dictionary of product features.
     /// </summary>
-    public class ProductFeatures : XElement
+    internal class ProductFeatures : ModelBase, IProductFeatures
     {
-                /// <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="ProductFeatures"/> class.
         /// </summary>
         public ProductFeatures()
@@ -50,7 +49,7 @@ namespace Portable.Licensing.Model
         /// <param name="value">The value of the feature.</param>
         public void Add(string key, string value)
         {
-            Add(new XElement(key, value));
+            SetTag(key, value);
         }
 
         /// <summary>
@@ -91,8 +90,7 @@ namespace Portable.Licensing.Model
         /// <returns>The value of the feature if available; otherwiese null.</returns>
         public string Get(string key)
         {
-            var element = Element(key);
-            return element != null ? element.Value : null;
+            return GetTag(key);
         }
 
         /// <summary>

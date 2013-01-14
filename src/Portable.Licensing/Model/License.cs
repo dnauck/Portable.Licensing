@@ -33,7 +33,7 @@ namespace Portable.Licensing.Model
     /// <summary>
     /// A software license
     /// </summary>
-    public class License : XElement
+    internal class License : ModelBase, ILicense
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="License"/> class.
@@ -41,24 +41,31 @@ namespace Portable.Licensing.Model
         public License()
             : base("License")
         {
+            ProductFeatures = new ProductFeatures();
+            Customer = new Customer();
         }
 
         /// <summary>
-        /// Gets or sets the unique identifier of this <see cref="License"/>.
+        /// Gets or sets the unique identifier of this <see cref="ILicense"/>.
         /// </summary>
         public Guid Id
         {
-            get { return new Guid(Element("Id").Value); }
-            set { SetElementValue("Id", value); }
+            get { return new Guid(GetTag("Id") ?? Guid.Empty.ToString()); }
+            set { SetTag("Id", value.ToString()); }
         }
 
         /// <summary>
-        /// Gets or set the <see cref="LicenseType"/> or this <see cref="License"/>.
+        /// Gets or set the <see cref="LicenseType"/> or this <see cref="ILicense"/>.
         /// </summary>
         public LicenseType Type
         {
-            get { return (LicenseType) Enum.Parse(typeof (LicenseType), Element("Type").Value, false); }
-            set { Add(new XElement("Type", value)); }
+            get
+            {
+                return
+                    (LicenseType)
+                    Enum.Parse(typeof (LicenseType), GetTag("Type") ?? LicenseType.Trial.ToString(), false);
+            }
+            set { SetTag("Type", value.ToString()); }
         }
 
         /// <summary>
@@ -67,50 +74,50 @@ namespace Portable.Licensing.Model
         /// </summary>
         public int Quantity
         {
-            get { return int.Parse(Element("Quantity").Value); }
-            set { Add(new XElement("Quantity", value)); }
+            get { return int.Parse(GetTag("Quantity") ?? "0"); }
+            set { SetTag("Quantity", value.ToString()); }
         }
 
         /// <summary>
-        /// Gets or sets the <see cref="ProductFeatures"/> of this <see cref="License"/>.
+        /// Gets or sets the <see cref="IProductFeatures"/> of this <see cref="ILicense"/>.
         /// </summary>
-        public ProductFeatures ProductFeatures
+        public IProductFeatures ProductFeatures
         {
             get { return Element("ProductFeatures") as ProductFeatures; }
-            set { Add(value); }
+            private set { Add(value); }
         }
 
         /// <summary>
-        /// Gets or sets the <see cref="Customer"/> of this <see cref="License"/>.
+        /// Gets or sets the <see cref="ICustomer"/> of this <see cref="ILicense"/>.
         /// </summary>
-        public Customer Customer
+        public ICustomer Customer
         {
             get { return Element("Customer") as Customer; }
-            set { Add(value); }
+            private set { Add(value); }
         }
 
         /// <summary>
-        /// Gets or sets the expiration date of this <see cref="License"/>.
+        /// Gets or sets the expiration date of this <see cref="ILicense"/>.
         /// Use this property to set the expiration date for a trial license
         /// or the expiration of support & subscription updates for a standard license.
         /// </summary>
         public DateTime Expiration
         {
-            get { return DateTime.ParseExact(Element("Expiration").Value, "r", CultureInfo.InvariantCulture); }
-            set { Add(new XElement("Expiration", value.ToUniversalTime().ToString("r", CultureInfo.InvariantCulture))); }
+            get { return DateTime.ParseExact(GetTag("Expiration"), "r", CultureInfo.InvariantCulture); }
+            set { SetTag("Expiration", value.ToUniversalTime().ToString("r", CultureInfo.InvariantCulture)); }
         }
 
         /// <summary>
         /// Gets the digital signature of this license.
         /// </summary>
-        /// <remarks>Use the <see cref="License.Sign"/> method to compute a signature.</remarks>
+        /// <remarks>Use the <see cref="ILicense.Sign"/> method to compute a signature.</remarks>
         public string Signature
         {
-            get { return Element("Signature").Value; }
+            get { return GetTag("Signature"); }
         }
 
         /// <summary>
-        /// Compute a signature and sign this <see cref="License"/> with the provided key.
+        /// Compute a signature and sign this <see cref="ILicense"/> with the provided key.
         /// </summary>
         /// <param name="privateKey">The private key in xml string format to compute the signature.</param>
         public void Sign(string privateKey)
@@ -136,10 +143,10 @@ namespace Portable.Licensing.Model
         }
 
         /// <summary>
-        /// Determines whether the <see cref="License.Signature"/> property verifies for the specified key.
+        /// Determines whether the <see cref="ILicense.Signature"/> property verifies for the specified key.
         /// </summary>
-        /// <param name="publicKey">The public key in xml string format to verify the <see cref="License.Signature"/>.</param>
-        /// <returns>true if the <see cref="License.Signature"/> verifies; otherwise false.</returns>
+        /// <param name="publicKey">The public key in xml string format to verify the <see cref="ILicense.Signature"/>.</param>
+        /// <returns>true if the <see cref="ILicense.Signature"/> verifies; otherwise false.</returns>
         public bool VerifySignature(string publicKey)
         {
             var signTag = Element("Signature");

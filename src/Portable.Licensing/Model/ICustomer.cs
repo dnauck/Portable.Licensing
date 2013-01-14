@@ -28,32 +28,16 @@ namespace Portable.Licensing.Model
     /// <summary>
     /// The customer of a <see cref="ILicense"/>.
     /// </summary>
-    internal class Customer : ModelBase, ICustomer
+    public interface ICustomer
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Customer"/> class.
-        /// </summary>
-        public Customer()
-            : base("Customer")
-        {
-        }
-
         /// <summary>
         /// Gets or sets the Name of this <see cref="Customer"/>.
         /// </summary>
-        public new string Name
-        {
-            get { return GetTag("Name"); }
-            set { SetTag("Name", value); }
-        }
+        string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the Email of this <see cref="Customer"/>.
         /// </summary>
-        public string Email
-        {
-            get { return GetTag("Name"); }
-            set { SetTag("Name", value); }
-        }
+        string Email { get; set; }
     }
 }
