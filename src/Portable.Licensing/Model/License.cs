@@ -35,13 +35,11 @@ namespace Portable.Licensing.Model
     /// </summary>
     public class License : XElement
     {
-        private static readonly XNamespace ns = "http://schema.nauck-it.de/portable.licensing#license";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="License"/> class.
         /// </summary>
         public License()
-            : base(ns + "License")
+            : base("License")
         {
         }
 
@@ -50,8 +48,8 @@ namespace Portable.Licensing.Model
         /// </summary>
         public Guid Id
         {
-            get { return new Guid(Element(ns + "Id").Value); }
-            set { SetElementValue(ns + "Id", value); }
+            get { return new Guid(Element("Id").Value); }
+            set { SetElementValue("Id", value); }
         }
 
         /// <summary>
@@ -59,8 +57,8 @@ namespace Portable.Licensing.Model
         /// </summary>
         public LicenseType Type
         {
-            get { return (LicenseType) Enum.Parse(typeof (LicenseType), Element(ns + "Type").Value, false); }
-            set { Add(new XElement(ns + "Type", value)); }
+            get { return (LicenseType) Enum.Parse(typeof (LicenseType), Element("Type").Value, false); }
+            set { Add(new XElement("Type", value)); }
         }
 
         /// <summary>
@@ -69,8 +67,8 @@ namespace Portable.Licensing.Model
         /// </summary>
         public int Quantity
         {
-            get { return int.Parse(Element(ns + "Quantity").Value); }
-            set { Add(new XElement(ns + "Quantity", value)); }
+            get { return int.Parse(Element("Quantity").Value); }
+            set { Add(new XElement("Quantity", value)); }
         }
 
         /// <summary>
@@ -89,8 +87,8 @@ namespace Portable.Licensing.Model
         /// </summary>
         public DateTime Expiration
         {
-            get { return DateTime.ParseExact(Element(ns + "Expiration").Value, "r", CultureInfo.InvariantCulture); }
-            set { Add(new XElement(ns + "Expiration", value.ToUniversalTime().ToString("r", CultureInfo.InvariantCulture))); }
+            get { return DateTime.ParseExact(Element("Expiration").Value, "r", CultureInfo.InvariantCulture); }
+            set { Add(new XElement("Expiration", value.ToUniversalTime().ToString("r", CultureInfo.InvariantCulture))); }
         }
 
         /// <summary>
@@ -99,7 +97,7 @@ namespace Portable.Licensing.Model
         /// <remarks>Use the <see cref="License.Sign"/> method to compute a signature.</remarks>
         public string Signature
         {
-            get { return Element(ns + "Signature").Value; }
+            get { return Element("Signature").Value; }
         }
 
         /// <summary>
@@ -108,7 +106,7 @@ namespace Portable.Licensing.Model
         /// <param name="privateKey">The private key in xml string format to compute the signature.</param>
         public void Sign(string privateKey)
         {
-            var signTag = Element(ns + "Signature") ?? new XElement(ns + "Signature");
+            var signTag = Element("Signature") ?? new XElement("Signature");
 
             try
             {
@@ -135,7 +133,7 @@ namespace Portable.Licensing.Model
         /// <returns>true if the <see cref="License.Signature"/> verifies; otherwise false.</returns>
         public bool VerifySignature(string publicKey)
         {
-            var signTag = Element(ns + "Signature");
+            var signTag = Element("Signature");
             
             if (signTag == null)
                 return false;

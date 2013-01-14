@@ -32,13 +32,11 @@ namespace Portable.Licensing.Model
     /// </summary>
     public class Customer : XElement
     {
-        private static readonly XNamespace ns = "http://schema.nauck-it.de/portable.licensing#customer";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Customer"/> class.
         /// </summary>
         public Customer()
-            : base(ns + "Customer")
+            : base("Customer")
         {
         }
 
@@ -47,8 +45,8 @@ namespace Portable.Licensing.Model
         /// </summary>
         public new string Name
         {
-            get { return Element(ns + "Name").Value; }
-            set { Add(new XElement(ns + "Name", value)); }
+            get { return Element("Name").Value; }
+            set { Add(new XElement("Name", value)); }
         }
 
         /// <summary>
@@ -56,8 +54,8 @@ namespace Portable.Licensing.Model
         /// </summary>
         public string Email
         {
-            get { return Element(ns + "Email").Value; }
-            set { Add(new XElement(ns + "Email", value)); }
+            get { return Element("Email").Value; }
+            set { Add(new XElement("Email", value)); }
         }
     }
 }
