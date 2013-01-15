@@ -31,12 +31,12 @@ namespace Portable.Licensing.Model
     public interface ICustomer
     {
         /// <summary>
-        /// Gets or sets the Name of this <see cref="Customer"/>.
+        /// Gets or sets the Name of this <see cref="ICustomer"/>.
         /// </summary>
         string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the Email of this <see cref="Customer"/>.
+        /// Gets or sets the Email of this <see cref="ICustomer"/>.
         /// </summary>
         string Email { get; set; }
     }

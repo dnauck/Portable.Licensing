@@ -39,7 +39,7 @@ namespace Portable.Licensing.Model
         }
 
         /// <summary>
-        /// Gets or sets the Name of this <see cref="Customer"/>.
+        /// Gets or sets the Name of this <see cref="ICustomer"/>.
         /// </summary>
         public new string Name
         {
@@ -48,7 +48,7 @@ namespace Portable.Licensing.Model
         }
 
         /// <summary>
-        /// Gets or sets the Email of this <see cref="Customer"/>.
+        /// Gets or sets the Email of this <see cref="ICustomer"/>.
         /// </summary>
         public string Email
         {
