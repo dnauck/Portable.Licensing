@@ -44,6 +44,16 @@ namespace Portable.Licensing.Model
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="License"/> class
+        /// with the specified content.
+        /// </summary>
+        /// <param name="content">The initial content of this <see cref="License"/>.</param>
+        internal License(params object[] content)
+            : base("License", content)
+        {
+        }
+
+        /// <summary>
         /// Gets or sets the unique identifier of this <see cref="ILicense"/>.
         /// </summary>
         public Guid Id
@@ -179,6 +189,22 @@ namespace Portable.Licensing.Model
             {
                 Add(signTag);
             }
+        }
+
+        /// <summary>
+        /// Loads a <see cref="License"/> from a <see cref="XElement"/> that contains the License XML.
+        /// </summary>
+        /// <param name="element">A <see cref="XElement"/> that contains the License XML.</param>
+        /// <returns>A <see cref="License"/> populated from the <see cref="XElement"/> that contains the License XML.</returns>
+        internal static License Load(XElement element)
+        {
+            if (element == null)
+                throw new ArgumentNullException("element", "Argument cannot be null.");
+
+            if (element.Name != "License")
+                throw new ArgumentException("XML is not a License.", "element");
+
+            return new License(element.Elements(), element.Attributes());
         }
     }
 }
