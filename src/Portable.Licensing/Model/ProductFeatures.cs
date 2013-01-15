@@ -25,6 +25,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Portable.Licensing.Model
 {
@@ -69,8 +70,11 @@ namespace Portable.Licensing.Model
         /// <param name="key">The key of the feature.</param>
         public void Remove(string key)
         {
-            var element = Element(key);
-            if(element != null)
+            var element =
+                Elements("Feature")
+                    .FirstOrDefault(e => e.Attribute("name") != null && e.Attribute("name").Value == key);
+
+            if (element != null)
                 element.Remove();
         }
 
@@ -99,7 +103,7 @@ namespace Portable.Licensing.Model
         /// <returns>A dictionary of all features in this collection.</returns>
         public IDictionary<string, string> GetAll()
         {
-            return Elements().ToDictionary(e => e.Name.ToString(), e => e.Value);
+            return Elements().ToDictionary(e => e.Attribute("name").Value, e => e.Value);
         }
 
         /// <summary>
@@ -110,7 +114,7 @@ namespace Portable.Licensing.Model
         /// <returns>true if the collection contains this feature; otherwise false.</returns>
         public bool Contains(string key)
         {
-            return Elements().Any(e => e.Name == key);
+            return Elements().Any(e => e.Attribute("name") != null && e.Attribute("name").Value == key);
         }
 
         /// <summary>
@@ -121,7 +125,33 @@ namespace Portable.Licensing.Model
         /// <returns>true if the collection contains all specified feature; otherwise false.</returns>
         public bool ContainsAll(string[] keys)
         {
-            return Elements().All(e => keys.Contains(e.Name.ToString()));
+            return Elements().All(e => e.Attribute("name") != null && keys.Contains(e.Attribute("name").Value));
+        }
+
+        protected override void SetTag(string name, string value)
+        {
+            var element =
+                Elements("Feature")
+                    .FirstOrDefault(e => e.Attribute("name") != null && e.Attribute("name").Value == name);
+
+            if (element == null)
+            {
+                element = new XElement("Feature");
+                element.Add(new XAttribute("name", name));
+                Add(element);
+            }
+
+            if (value != null)
+                element.Value = value;
+        }
+
+        protected override string GetTag(string name)
+        {
+            var element =
+                Elements("Feature")
+                    .FirstOrDefault(e => e.Attribute("name") != null && e.Attribute("name").Value == name);
+
+            return element != null ? element.Value : null;
         }
     }
 }
