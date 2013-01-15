@@ -64,7 +64,7 @@ namespace Portable.Licensing.Model
 
         /// <summary>
         /// Removes a feature with the specified key
-        /// from the collecton.
+        /// from the collection.
         /// </summary>
         /// <param name="key">The key of the feature.</param>
         public void Remove(string key)
@@ -87,7 +87,7 @@ namespace Portable.Licensing.Model
         /// specified key.
         /// </summary>
         /// <param name="key">The key of the feature.</param>
-        /// <returns>The value of the feature if available; otherwiese null.</returns>
+        /// <returns>The value of the feature if available; otherwise null.</returns>
         public string Get(string key)
         {
             return GetTag(key);
