@@ -41,8 +41,6 @@ namespace Portable.Licensing.Model
         public License()
             : base("License")
         {
-            ProductFeatures = new ProductFeatures();
-            Customer = new Customer();
         }
 
         /// <summary>
@@ -83,7 +81,13 @@ namespace Portable.Licensing.Model
         /// </summary>
         public IProductFeatures ProductFeatures
         {
-            get { return Element("ProductFeatures") as ProductFeatures; }
+            get
+            {
+                if (Element("ProductFeatures") == null)
+                    ProductFeatures = new ProductFeatures();
+
+                return Element("ProductFeatures") as ProductFeatures;
+            }
             private set { Add(value); }
         }
 
@@ -92,7 +96,13 @@ namespace Portable.Licensing.Model
         /// </summary>
         public ICustomer Customer
         {
-            get { return Element("Customer") as Customer; }
+            get
+            {
+                if(Element("Customer") == null) 
+                    Customer = new Customer();
+
+                return Element("Customer") as Customer;
+            }
             private set { Add(value); }
         }
 
