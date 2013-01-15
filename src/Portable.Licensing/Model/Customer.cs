@@ -52,8 +52,8 @@ namespace Portable.Licensing.Model
         /// </summary>
         public string Email
         {
-            get { return GetTag("Name"); }
-            set { SetTag("Name", value); }
+            get { return GetTag("Email"); }
+            set { SetTag("Email", value); }
         }
     }
 }
