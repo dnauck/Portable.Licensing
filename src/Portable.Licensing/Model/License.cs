@@ -94,8 +94,16 @@ namespace Portable.Licensing.Model
         {
             get
             {
-                if (Element("ProductFeatures") == null)
+                var xmlElement = Element("ProductFeatures");
+
+                if (xmlElement == null)
+                {
                     ProductFeatures = new ProductFeatures();
+                }
+                else if (!(xmlElement is ProductFeatures))
+                {
+                    xmlElement.ReplaceWith(new ProductFeatures(xmlElement.Elements(), xmlElement.Attributes()));
+                }
 
                 return Element("ProductFeatures") as ProductFeatures;
             }
@@ -109,8 +117,16 @@ namespace Portable.Licensing.Model
         {
             get
             {
-                if(Element("Customer") == null) 
+                var xmlElement = Element("Customer");
+
+                if (xmlElement == null)
+                {
                     Customer = new Customer();
+                }
+                else if (!(xmlElement is Customer))
+                {
+                    xmlElement.ReplaceWith(new Customer(xmlElement.Elements(), xmlElement.Attributes()));
+                }
 
                 return Element("Customer") as Customer;
             }
