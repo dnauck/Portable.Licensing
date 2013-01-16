@@ -60,7 +60,7 @@ namespace Portable.Licensing.Model
         public Guid Id
         {
             get { return new Guid(GetTag("Id") ?? Guid.Empty.ToString()); }
-            set { SetTag("Id", value.ToString()); }
+            set { if (!IsSigned) SetTag("Id", value.ToString()); }
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Portable.Licensing.Model
                     (LicenseType)
                     Enum.Parse(typeof (LicenseType), GetTag("Type") ?? LicenseType.Trial.ToString(), false);
             }
-            set { SetTag("Type", value.ToString()); }
+            set { if (!IsSigned) SetTag("Type", value.ToString()); }
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Portable.Licensing.Model
         public int Quantity
         {
             get { return int.Parse(GetTag("Quantity") ?? "0"); }
-            set { SetTag("Quantity", value.ToString()); }
+            set { if (!IsSigned) SetTag("Quantity", value.ToString()); }
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Portable.Licensing.Model
 
                 return Element("ProductFeatures") as ProductFeatures;
             }
-            private set { Add(value); }
+            private set { if (!IsSigned) Add(value); }
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Portable.Licensing.Model
 
                 return Element("Customer") as Customer;
             }
-            private set { Add(value); }
+            private set { if (!IsSigned) Add(value); }
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Portable.Licensing.Model
         public DateTime Expiration
         {
             get { return DateTime.ParseExact(GetTag("Expiration"), "r", CultureInfo.InvariantCulture); }
-            set { SetTag("Expiration", value.ToUniversalTime().ToString("r", CultureInfo.InvariantCulture)); }
+            set { if (!IsSigned) SetTag("Expiration", value.ToUniversalTime().ToString("r", CultureInfo.InvariantCulture)); }
         }
 
         /// <summary>
@@ -206,6 +206,14 @@ namespace Portable.Licensing.Model
                 throw new ArgumentException("XML is not a License.", "element");
 
             return new License(element.Elements(), element.Attributes());
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="License"/> is already signed.
+        /// </summary>
+        private bool IsSigned
+        {
+            get { return (!string.IsNullOrEmpty(Signature)); }
         }
     }
 }
