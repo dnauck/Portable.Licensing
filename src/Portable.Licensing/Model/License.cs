@@ -124,7 +124,14 @@ namespace Portable.Licensing.Model
         /// </summary>
         public DateTime Expiration
         {
-            get { return DateTime.ParseExact(GetTag("Expiration"), "r", CultureInfo.InvariantCulture); }
+            get
+            {
+                return
+                    DateTime.ParseExact(
+                        GetTag("Expiration") ??
+                        DateTime.MaxValue.ToUniversalTime().ToString("r", CultureInfo.InvariantCulture)
+                        , "r", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+            }
             set { if (!IsSigned) SetTag("Expiration", value.ToUniversalTime().ToString("r", CultureInfo.InvariantCulture)); }
         }
 
