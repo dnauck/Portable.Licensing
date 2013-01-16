@@ -47,6 +47,7 @@ namespace Portable.Licensing.Model
         /// Initializes a new instance of the <see cref="License"/> class
         /// with the specified content.
         /// </summary>
+        /// <remarks>This constructor is only used for loading from XML.</remarks>
         /// <param name="content">The initial content of this <see cref="License"/>.</param>
         internal License(params object[] content)
             : base("License", content)
