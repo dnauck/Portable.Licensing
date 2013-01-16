@@ -43,6 +43,17 @@ namespace Portable.Licensing.Model
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ProductFeatures"/> class
+        /// with the specified content.
+        /// </summary>
+        /// <remarks>This constructor is only used for loading from XML.</remarks>
+        /// <param name="content">The initial content of this <see cref="ProductFeatures"/>.</param>
+        internal ProductFeatures(params object[] content)
+            : base("ProductFeatures", content)
+        {
+        }
+
+        /// <summary>
         /// Adds a new feature with the specified key and value
         /// to the collection.
         /// </summary>

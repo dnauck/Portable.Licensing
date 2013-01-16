@@ -39,6 +39,17 @@ namespace Portable.Licensing.Model
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Customer"/> class
+        /// with the specified content.
+        /// </summary>
+        /// <remarks>This constructor is only used for loading from XML.</remarks>
+        /// <param name="content">The initial content of this <see cref="Customer"/>.</param>
+        internal Customer(params object[] content)
+            : base("Customer", content)
+        {
+        }
+
+        /// <summary>
         /// Gets or sets the Name of this <see cref="ICustomer"/>.
         /// </summary>
         public new string Name
