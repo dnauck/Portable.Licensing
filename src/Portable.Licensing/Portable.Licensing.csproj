@@ -68,6 +68,20 @@
     <Compile Include="Security\Cryptography\KeyGenerator.cs" />
     <Compile Include="Security\Cryptography\KeySizes.cs" />
     <Compile Include="Security\Cryptography\Math\BigInteger.cs" />
+    <Compile Include="Validation\GeneralValidationFailure.cs" />
+    <Compile Include="Validation\IAddAdditionalValidationChain.cs" />
+    <Compile Include="Validation\IAssertValidation.cs" />
+    <Compile Include="Validation\ICompleteValidationChain.cs" />
+    <Compile Include="Validation\ILicenseValidator.cs" />
+    <Compile Include="Validation\InvalidSignatureValidationFailure.cs" />
+    <Compile Include="Validation\IStartValidationChain.cs" />
+    <Compile Include="Validation\IValidationChain.cs" />
+    <Compile Include="Validation\IValidationChainCondition.cs" />
+    <Compile Include="Validation\IValidationFailure.cs" />
+    <Compile Include="Validation\LicenseExpiredValidationFailure.cs" />
+    <Compile Include="Validation\LicenseValidationExtensions.cs" />
+    <Compile Include="Validation\LicenseValidator.cs" />
+    <Compile Include="Validation\ValidationChainBuilder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
