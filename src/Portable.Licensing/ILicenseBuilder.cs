@@ -32,7 +32,7 @@ namespace Portable.Licensing
     /// <summary>
     /// Fluent api to create and sign a new <see cref="ILicense"/>. 
     /// </summary>
-    public interface ILicenseBuilder
+    public interface ILicenseBuilder : IFluentInterface
     {
         /// <summary>
         /// Sets the unique identifier of the <see cref="ILicense"/>.

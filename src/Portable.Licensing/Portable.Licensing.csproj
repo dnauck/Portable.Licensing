@@ -42,6 +42,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AssemblyBuildDateAttribute.cs" />
+    <Compile Include="IFluentInterface.cs" />
     <Compile Include="ILicenseBuilder.cs" />
     <Compile Include="LicenseBuilder.cs" />
     <Compile Include="LicenseFactory.cs" />
