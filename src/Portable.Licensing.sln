@@ -5,6 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portable.Licensing", "Porta
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{449E5271-6EE5-49BA-AB0E-370978ACD89C}"
 	ProjectSection(SolutionItems) = preProject
+		..\build.fsx = ..\build.fsx
 		..\LICENSE.txt = ..\LICENSE.txt
 		..\README.md = ..\README.md
 	EndProjectSection
