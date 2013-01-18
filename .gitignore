@@ -3,6 +3,7 @@
 /Distribution
 /nant-*.log*
 packages/
+BuildMetrics/
 
 #ignore thumbnails created by windows
 Thumbs.db

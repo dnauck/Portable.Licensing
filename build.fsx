@@ -3,11 +3,16 @@
 open Fake
 open System;
 
-// Properties
+// common path properties
 let sourceDir = @"./src/"
 let buildDir = @"./Build/"
+let buildMetricsDir = @"./BuildMetrics/"
 let publishDir = @"./Publish/"
 let solutionFile = sourceDir @@ "Portable.Licensing.sln"
+
+// tools path properties
+let toolsDir = @"./Tools/"
+let nunitPath = toolsDir @@ "NUnit/"
 
 // common assembly info properties
 let assemblyVersion = "0.0.0.0"
@@ -15,8 +20,13 @@ let assemblyFileVersion = "0.0.0.0"
 let assemblyInformationalVersion = "0.0.0-devel"
 
 // Targets
+Target "All" (fun _ ->
+    trace "Building Portable.Licensing ..."    
+)
+
 Target "Clean" (fun _ ->
     CleanDir buildDir
+    CleanDir buildMetricsDir
     CleanDir publishDir
 )
 
@@ -46,12 +56,21 @@ Target "Build" (fun _ ->
     ) solutionFile
 )
 
+Target "Test" (fun _ ->
+    !! (buildDir + @"\*Tests.dll") 
+      |> NUnit (fun p ->
+          {p with
+             ToolPath = nunitPath;
+             //DisableShadowCopy = true;
+             OutputFile = buildMetricsDir @@ @"nunit-result.xml" })
+)
+
 // Dependencies
 "Clean" 
-  ==> "Build"
-
-//"CreateAssemblyInfo"
-//  ==> "Build"
+//  ==> "CreateAssemblyInfo"
+    ==> "Build"
+    ==> "Test"
+    ==> "All"
  
 // start build
-Run "Build"
+Run "All"
