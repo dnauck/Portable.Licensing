@@ -36,19 +36,19 @@ Store the private key securely and distribute the public key with your product.
 
 Now we need something to generate licenses. This could be easily done with the *LicenseFactory*:
 
-`var license = LicenseFactory.New()  
-    .WithUniqueIdentifier(Guid.NewGuid())  
-    .As(LicenseType.Trial)  
-    .ExpiresAt(DateTime.Now.AddDays(30))  
-    .WithMaximumUtilization(5)  
-    .WithProductFeatures(new Dictionary<string, string>  
+    var license = LicenseFactory.New()  
+        .WithUniqueIdentifier(Guid.NewGuid())  
+        .As(LicenseType.Trial)  
+        .ExpiresAt(DateTime.Now.AddDays(30))  
+        .WithMaximumUtilization(5)  
+        .WithProductFeatures(new Dictionary<string, string>  
                                       {  
                                           {"Sales Module", "yes"},  
                                           {"Purchase Module", "yes"},  
                                           {"Maximum Transactions", "10000"}  
                                       })  
-    .LicensedTo("Max Mustermann", "max@mustermann.tld")  
-    .CreateAndSignWithPrivateKey(privateKey);`
+        .LicensedTo("Max Mustermann", "max@mustermann.tld")  
+        .CreateAndSignWithPrivateKey(privateKey);
 
 You can now take the license and save it to an file for example:
 
