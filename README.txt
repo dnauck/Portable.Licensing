@@ -57,7 +57,7 @@ You can now take the license and save it to an file for example:
 
 ### Validate the license in your application ###
 
-The easiest way to to assert the license in the entry point of your application.
+The easiest way to assert the license in the entry point of your application.
 
 First load the license from a file or resource:
 
