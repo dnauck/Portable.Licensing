@@ -8,7 +8,7 @@ Portable.Licensing is a portable solution to implement a licensing component int
 
 ## Features ##
 
-- runs on .NET >= 4.0.3, Silverlight >= 4, Withdows Phone >= 7.5, Windows Store Apps, Mono, XBox 360
+- runs on .NET >= 4.0.3, Silverlight >= 4, Windows Phone >= 7.5, Windows Store Apps, Mono, XBox 360
 - easy creation and validation of your licenses
 - trial licenses
 - cryptographic signed licenses, no alteration possible
@@ -17,10 +17,10 @@ Portable.Licensing is a portable solution to implement a licensing component int
 ----------
 
 
-## Gettings started ##
+## Getting started ##
 ### Create a private and public key for your product ###
 
-Portable.Licensing uses asymmetric(public-key) encryption to ensure the license cannot be altered after creation.
+Portable.Licensing uses asymmetric (public-key) encryption to ensure the license cannot be altered after creation.
 
 First you need to create a new public/private key pair for your product:
 
@@ -47,10 +47,10 @@ Now we need something to generate licenses. This could be easily done with the *
                                           {"Purchase Module", "yes"},  
                                           {"Maximum Transactions", "10000"}  
                                       })  
-    .LicensedTo("Max Mustermann", "max@mustermann.tld")  
+    .LicensedTo("John Doe", "john.doe@yourmail.here")  
     .CreateAndSignWithPrivateKey(privateKey);`
 
-You can now take the license and save it to an file for example:
+You can now take the license and save it to a file for example:
 
 `File.WriteAllText("License.lic", license.ToString(), Encoding.UTF8);`
 
