@@ -71,4 +71,4 @@ Target "Test" (fun _ ->
     ==> "All"
  
 // start build
-Run "All"
+Run <| getBuildParamOrDefault "target" "All"
