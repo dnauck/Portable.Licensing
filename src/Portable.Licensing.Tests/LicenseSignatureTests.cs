@@ -41,7 +41,7 @@ namespace Portable.Licensing.Tests
         [SetUp]
         public void Init()
         {
-            var keyGenerator = Security.Cryptography.KeyGenerator.Default;
+            var keyGenerator = Security.Cryptography.KeyGenerator.Create();
             privateKey = keyGenerator.ToXmlString(true);
             publicKey = keyGenerator.ToXmlString(false);
         }

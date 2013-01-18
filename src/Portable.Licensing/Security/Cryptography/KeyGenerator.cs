@@ -55,11 +55,11 @@ namespace Portable.Licensing.Security.Cryptography
         }
 
         /// <summary>
-        /// Gets the default instance of the <see cref="KeyGenerator"/> class.
+        /// Creates a new instance of the <see cref="KeyGenerator"/> class.
         /// </summary>
-        public static KeyGenerator Default
+        public static KeyGenerator Create()
         {
-            get { return new KeyGenerator(); }
+            return new KeyGenerator();
         }
 
         public void Dispose()
