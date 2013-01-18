@@ -20,9 +20,7 @@ let assemblyFileVersion = "0.0.0.0"
 let assemblyInformationalVersion = "0.0.0-devel"
 
 // Targets
-Target "All" (fun _ ->
-    trace "Building Portable.Licensing ..."    
-)
+Target "All" DoNothing
 
 Target "Clean" (fun _ ->
     CleanDir buildDir
