@@ -24,9 +24,9 @@ Portable.Licensing uses asymmetric(public-key) encryption to ensure the license 
 
 First you need to create a new public/private key pair for your product:
 
-`var keyGenerator = Portable.Licensing.Security.Cryptography.KeyGenerator.Create();  
-privateKey = keyGenerator.ToXmlString(true);  
-publicKey = keyGenerator.ToXmlString(false);`
+    var keyGenerator = Portable.Licensing.Security.Cryptography.KeyGenerator.Create();  
+    privateKey = keyGenerator.ToXmlString(true);  
+    publicKey = keyGenerator.ToXmlString(false);
 
 Store the private key securely and distribute the public key with your product.
 
@@ -36,23 +36,23 @@ Store the private key securely and distribute the public key with your product.
 
 Now we need something to generate licenses. This could be easily done with the *LicenseFactory*:
 
-`var license = LicenseFactory.New()  
-    .WithUniqueIdentifier(Guid.NewGuid())  
-    .As(LicenseType.Trial)  
-    .ExpiresAt(DateTime.Now.AddDays(30))  
-    .WithMaximumUtilization(5)  
-    .WithProductFeatures(new Dictionary<string, string>  
+    var license = LicenseFactory.New()  
+        .WithUniqueIdentifier(Guid.NewGuid())  
+        .As(LicenseType.Trial)  
+        .ExpiresAt(DateTime.Now.AddDays(30))  
+        .WithMaximumUtilization(5)  
+        .WithProductFeatures(new Dictionary<string, string>  
                                       {  
                                           {"Sales Module", "yes"},  
                                           {"Purchase Module", "yes"},  
                                           {"Maximum Transactions", "10000"}  
                                       })  
-    .LicensedTo("Max Mustermann", "max@mustermann.tld")  
-    .CreateAndSignWithPrivateKey(privateKey);`
+        .LicensedTo("Max Mustermann", "max@mustermann.tld")  
+        .CreateAndSignWithPrivateKey(privateKey);
 
 You can now take the license and save it to an file for example:
 
-`File.WriteAllText("License.lic", license.ToString(), Encoding.UTF8);`
+    File.WriteAllText("License.lic", license.ToString(), Encoding.UTF8);
 
 
 ### Validate the license in your application ###
@@ -61,16 +61,16 @@ The easiest way to assert the license in the entry point of your application.
 
 First load the license from a file or resource:
 
-`var license = LicenseFactory.Load(...);`
+    var license = LicenseFactory.Load(...);
 
 Then you can assert the license:
 
-`var validationFailures = license.Validate()  
-                                .ExpirationDate()  
-                                    .When(lic => lic.Type == LicenseType.Trial)  
-                                .And()  
-                                .Signature(publicKey)  
-                                .AssertValidLicense();`
+    var validationFailures = license.Validate()  
+                                    .ExpirationDate()  
+                                        .When(lic => lic.Type == LicenseType.Trial)  
+                                    .And()  
+                                    .Signature(publicKey)  
+                                    .AssertValidLicense();
 
 ----------
 
