@@ -40,7 +40,7 @@ Target "CreateAssemblyInfo" (fun _ ->
           AssemblyVersion = assemblyVersion;
           AssemblyFileVersion = assemblyFileVersion;
           AssemblyInformationalVersion = assemblyInformationalVersion;
-          OutputFileName = @"./src/CommonAssemblyInfo.cs"
+          OutputFileName = sourceDir @@ "CommonAssemblyInfo.cs"
           }
         )
 )
