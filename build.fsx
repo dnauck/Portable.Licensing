@@ -55,7 +55,7 @@ Target "Build" (fun _ ->
 )
 
 Target "Test" (fun _ ->
-    !! (buildDir + @"\*Tests.dll") 
+    !! (buildDir @@ @"*Tests.dll") 
       |> NUnit (fun p ->
           {p with
              ToolPath = nunitPath;
