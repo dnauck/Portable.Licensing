@@ -119,10 +119,11 @@ namespace Portable.Licensing
         /// private encryption key.
         /// </summary>
         /// <param name="privateKey">The private encryption key for the signature.</param>
+        /// <param name="passPhrase">The pass phrase to decrypt the private key.</param>
         /// <returns>The signed <see cref="ILicense"/>.</returns>
-        public ILicense CreateAndSignWithPrivateKey(string privateKey)
+        public ILicense CreateAndSignWithPrivateKey(string privateKey, string passPhrase)
         {
-            license.Sign(privateKey);
+            license.Sign(privateKey, passPhrase);
             return license;
         }
     }
