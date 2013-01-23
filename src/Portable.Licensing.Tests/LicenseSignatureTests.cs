@@ -35,15 +35,18 @@ namespace Portable.Licensing.Tests
     [TestFixture]
     public class LicenseSignatureTests
     {
+        private string passPhrase;
         private string privateKey;
         private string publicKey;
 
         [SetUp]
         public void Init()
         {
+            passPhrase = Guid.NewGuid().ToString();
             var keyGenerator = Security.Cryptography.KeyGenerator.Create();
-            privateKey = keyGenerator.ToXmlString(true);
-            publicKey = keyGenerator.ToXmlString(false);
+            var keyPair = keyGenerator.GenerateKeyPair();
+            privateKey = keyPair.ToEncryptedPrivateKeyString(passPhrase);
+            publicKey = keyPair.ToPublicKeyString();
         }
 
         private static DateTime ConvertToRfc1123(DateTime dateTime)
@@ -57,7 +60,7 @@ namespace Portable.Licensing.Tests
         public void Can_Generate_And_Validate_Signature_With_Empty_License()
         {
             var license = LicenseFactory.New()
-                                        .CreateAndSignWithPrivateKey(privateKey);
+                                        .CreateAndSignWithPrivateKey(privateKey, passPhrase);
 
             Assert.That(license, Is.Not.Null);
             Assert.That(license.Signature, Is.Not.Null);
@@ -99,7 +102,7 @@ namespace Portable.Licensing.Tests
                                         .WithProductFeatures(productFeatures)
                                         .LicensedTo(customerName, customerEmail)
                                         .ExpiresAt(expirationDate)
-                                        .CreateAndSignWithPrivateKey(privateKey);
+                                        .CreateAndSignWithPrivateKey(privateKey, passPhrase);
 
             Assert.That(license, Is.Not.Null);
             Assert.That(license.Signature, Is.Not.Null);
@@ -144,7 +147,7 @@ namespace Portable.Licensing.Tests
                                         .WithProductFeatures(productFeatures)
                                         .LicensedTo(customerName, customerEmail)
                                         .ExpiresAt(expirationDate)
-                                        .CreateAndSignWithPrivateKey(privateKey);
+                                        .CreateAndSignWithPrivateKey(privateKey, passPhrase);
 
             Assert.That(license, Is.Not.Null);
             Assert.That(license.Signature, Is.Not.Null);
