@@ -20,13 +20,14 @@ Portable.Licensing is a portable solution to implement a licensing component int
 ## Getting started ##
 ### Create a private and public key for your product ###
 
-Portable.Licensing uses asymmetric (public-key) encryption to ensure the license cannot be altered after creation.
+Portable.Licensing uses the Elliptic Curve Digital Signature Algorithmus (ECDSA) to ensure the license cannot be altered after creation.
 
 First you need to create a new public/private key pair for your product:
 
-    var keyGenerator = Portable.Licensing.Security.Cryptography.KeyGenerator.Create();  
-    privateKey = keyGenerator.ToXmlString(true);  
-    publicKey = keyGenerator.ToXmlString(false);
+    var keyGenerator = Portable.Licensing.Security.Cryptography.KeyGenerator.Create(); 
+    var keyPair = keyGenerator.GenerateKeyPair(); 
+    privateKey = keyPair.ToEncryptedPrivateKeyString(passPhrase);  
+    publicKey = keyPair.ToPublicKeyString();
 
 Store the private key securely and distribute the public key with your product.
 
@@ -48,7 +49,7 @@ Now we need something to generate licenses. This could be easily done with the *
                                           {"Maximum Transactions", "10000"}  
                                       })  
         .LicensedTo("John Doe", "john.doe@yourmail.here")  
-        .CreateAndSignWithPrivateKey(privateKey);
+        .CreateAndSignWithPrivateKey(privateKey, passPhrase);
 
 You can now take the license and save it to a file for example:
 
