@@ -23,7 +23,9 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-using System;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Security;
 using Portable.Licensing.Model;
 
 namespace Portable.Licensing.Security.Cryptography
@@ -31,15 +33,16 @@ namespace Portable.Licensing.Security.Cryptography
     /// <summary>
     /// Represents a generator for signature keys of <see cref="License"/>.
     /// </summary>
-    public class KeyGenerator : IDisposable
+    public class KeyGenerator
     {
-        private readonly AsymmetricAlgorithm hashAlgorithm;
+        private readonly IAsymmetricCipherKeyPairGenerator keyGenerator;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="KeyGenerator"/> class.
+        /// Initializes a new instance of the <see cref="KeyGenerator"/> class
+        /// with a key size of 256 bits.
         /// </summary>
         public KeyGenerator()
-            : this(1088)
+            : this(256)
         {
         }
 
@@ -47,11 +50,20 @@ namespace Portable.Licensing.Security.Cryptography
         /// Initializes a new instance of the <see cref="KeyGenerator"/> class
         /// with the specified key size.
         /// </summary>
+        /// <remarks>Following key sizes are supported:
+        /// - 192
+        /// - 224
+        /// - 239
+        /// - 256 (default)
+        /// - 384
+        /// - 521</remarks>
         /// <param name="keySize">The key size.</param>
-        internal KeyGenerator(int keySize)
+        public KeyGenerator(int keySize)
         {
-            hashAlgorithm = AsymmetricAlgorithm.Create();
-            hashAlgorithm.KeySize = keySize;
+            var secureRandom = SecureRandom.GetInstance("SHA256PRNG");
+            var keyParams = new KeyGenerationParameters(secureRandom, keySize);
+            keyGenerator = new ECKeyPairGenerator();
+            keyGenerator.Init(keyParams);
         }
 
         /// <summary>
@@ -62,18 +74,13 @@ namespace Portable.Licensing.Security.Cryptography
             return new KeyGenerator();
         }
 
-        public void Dispose()
-        {
-        }
-
         /// <summary>
-        /// Creates and returns an XML string containing the key.
+        /// Generates a private/public key pair for license signing.
         /// </summary>
-        /// <param name="includePrivateParameters">true to include a public and private key; false to include only the public key.</param>
-        /// <returns>An XML string containing the key.</returns>
-        public string ToXmlString(bool includePrivateParameters)
+        /// <returns>An <see cref="KeyPair"/> containing the keys.</returns>
+        public KeyPair GenerateKeyPair()
         {
-            return hashAlgorithm.ToXmlString(includePrivateParameters);
+            return new KeyPair(keyGenerator.GenerateKeyPair());
         }
     }
 }
