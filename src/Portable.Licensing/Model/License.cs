@@ -202,7 +202,7 @@ namespace Portable.Licensing.Model
         public bool VerifySignature(string publicKey)
         {
             var signTag = Element("Signature");
-            
+
             if (signTag == null)
                 return false;
 
