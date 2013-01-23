@@ -75,7 +75,8 @@ namespace Portable.Licensing.Model
         /// Compute a signature and sign this <see cref="ILicense"/> with the provided key.
         /// </summary>
         /// <param name="privateKey">The private key in xml string format to compute the signature.</param>
-        void Sign(string privateKey);
+        /// <param name="passPhrase">The pass phrase to decrypt the private key.</param>
+        void Sign(string privateKey, string passPhrase);
 
         /// <summary>
         /// Determines whether the <see cref="ILicense.Signature"/> property verifies for the specified key.

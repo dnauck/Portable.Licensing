@@ -27,6 +27,9 @@ using System;
 using System.Globalization;
 using System.Text;
 using System.Xml.Linq;
+using Org.BouncyCastle.Asn1.X9;
+using Org.BouncyCastle.Security;
+using Portable.Licensing.Security.Cryptography;
 
 namespace Portable.Licensing.Model
 {
@@ -35,6 +38,8 @@ namespace Portable.Licensing.Model
     /// </summary>
     internal class License : ModelBase, ILicense
     {
+        private readonly string signatureAlgorithm = X9ObjectIdentifiers.ECDsaWithSha512.Id;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="License"/> class.
         /// </summary>
@@ -164,7 +169,8 @@ namespace Portable.Licensing.Model
         /// Compute a signature and sign this <see cref="ILicense"/> with the provided key.
         /// </summary>
         /// <param name="privateKey">The private key in xml string format to compute the signature.</param>
-        public void Sign(string privateKey)
+        /// <param name="passPhrase">The pass phrase to decrypt the private key.</param>
+        public void Sign(string privateKey, string passPhrase)
         {
             var signTag = Element("Signature") ?? new XElement("Signature");
 
@@ -173,12 +179,14 @@ namespace Portable.Licensing.Model
                 if (signTag.Parent != null)
                     signTag.Remove();
 
-                using (var e = new Security.Cryptography.ElGamal.ElGamalManaged())
-                {
-                    e.FromXmlString(privateKey);
-                    var signature = e.Sign(Encoding.UTF8.GetBytes(ToString(SaveOptions.DisableFormatting)));
-                    signTag.Value = Convert.ToBase64String(signature);
-                }
+                var privKey = KeyFactory.FromEncryptedPrivateKeyString(privateKey, passPhrase);
+
+                var documentToSign = Encoding.UTF8.GetBytes(ToString(SaveOptions.DisableFormatting));
+                var signer = SignerUtilities.GetSigner(signatureAlgorithm);
+                signer.Init(true, privKey);
+                signer.BlockUpdate(documentToSign, 0, documentToSign.Length);
+                var signature = signer.GenerateSignature();
+                signTag.Value = Convert.ToBase64String(signature);
             }
             finally
             {
@@ -202,12 +210,14 @@ namespace Portable.Licensing.Model
             {
                 signTag.Remove();
 
-                using (var e = new Security.Cryptography.ElGamal.ElGamalManaged())
-                {
-                    e.FromXmlString(publicKey);
-                    return e.VerifySignature(Encoding.UTF8.GetBytes(ToString(SaveOptions.DisableFormatting)),
-                                             Convert.FromBase64String(signTag.Value));
-                }
+                var pubKey = KeyFactory.FromPublicKeyString(publicKey);
+
+                var documentToSign = Encoding.UTF8.GetBytes(ToString(SaveOptions.DisableFormatting));
+                var signer = SignerUtilities.GetSigner(signatureAlgorithm);
+                signer.Init(false, pubKey);
+                signer.BlockUpdate(documentToSign, 0, documentToSign.Length);
+
+                return signer.VerifySignature(Convert.FromBase64String(signTag.Value));
             }
             finally
             {
