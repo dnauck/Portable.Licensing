@@ -4,7 +4,7 @@
 
 ## About Portable.Licensing ##
 
-Portable.Licensing is a portable solution to implement a licensing component into your application or library.
+Portable.Licensing is a portable solution which allows you to implement a licensing component into your application or library.
 
 ## Features ##
 
@@ -26,7 +26,7 @@ First you need to create a new public/private key pair for your product:
 
     var keyGenerator = Portable.Licensing.Security.Cryptography.KeyGenerator.Create(); 
     var keyPair = keyGenerator.GenerateKeyPair(); 
-    privateKey = keyPair.ToEncryptedPrivateKeyString(passPhrase);  
+    privateKey = keyPair.ToEncryptedPrivateKeyString(passphrase);  
     publicKey = keyPair.ToPublicKeyString();
 
 Store the private key securely and distribute the public key with your product.
@@ -51,14 +51,14 @@ Now we need something to generate licenses. This could be easily done with the *
         .LicensedTo("John Doe", "john.doe@yourmail.here")  
         .CreateAndSignWithPrivateKey(privateKey, passPhrase);
 
-You can now take the license and save it to a file for example:
+Now you can take the license and save it to a file:
 
     File.WriteAllText("License.lic", license.ToString(), Encoding.UTF8);
 
 
 ### Validate the license in your application ###
 
-The easiest way to assert the license in the entry point of your application.
+The easiest way to assert the license is in the entry point of your application.
 
 First load the license from a file or resource:
 
@@ -82,7 +82,6 @@ Portable.Licensing is distributed using the MIT/X11 License.
 
 ## Further Information ##
 
-The latest release and documentation can be found on
-the Portable.Licensing project website:
+The latest release and documentation can be found on the Portable.Licensing project website:
 
 [https://github.com/dnauck/Portable.Licensing](https://github.com/dnauck/Portable.Licensing)
