@@ -26,8 +26,8 @@ First you need to create a new public/private key pair for your product:
 
     var keyGenerator = Portable.Licensing.Security.Cryptography.KeyGenerator.Create(); 
     var keyPair = keyGenerator.GenerateKeyPair(); 
-    privateKey = keyPair.ToEncryptedPrivateKeyString(passPhrase);  
-    publicKey = keyPair.ToPublicKeyString();
+    var privateKey = keyPair.ToEncryptedPrivateKeyString(passPhrase);  
+    var publicKey = keyPair.ToPublicKeyString();
 
 Store the private key securely and distribute the public key with your product.
 
