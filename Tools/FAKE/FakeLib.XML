@@ -37,6 +37,16 @@
  Stores which targets are on the same level
 </summary>
 </member>
+<member name="M:Fake.AdditionalSyntax.RunTarget">
+<summary>
+ Runs the target given by the target parameter
+</summary>
+</member>
+<member name="M:Fake.AdditionalSyntax.RunTargetOrDefault(System.String)">
+<summary>
+ Runs the target given by the target parameter or the given default target
+</summary>
+</member>
 <member name="M:Fake.AdditionalSyntax.RunParameterTargetOrDefault(System.String,System.String)">
 <summary>
  Runs the target given by the build script parameter or the given default target
@@ -73,6 +83,106 @@
 </summary>
 </member>
 <member name="T:Fake.AdditionalSyntax">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:Fake.AssemblyInfoFile.CreateFSharpAssemblyInfo(System.String,System.Collections.Generic.IEnumerable{Fake.AssemblyInfoFile.Attribute})">
+<summary>
+ Creates a F# AssemblyInfo file with the given attributes
+</summary>
+</member>
+<member name="M:Fake.AssemblyInfoFile.CreateCSharpAssemblyInfo(System.String,System.Collections.Generic.IEnumerable{Fake.AssemblyInfoFile.Attribute})">
+<summary>
+ Creates a C# AssemblyInfo file with the given attributes
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Fake.AssemblyInfoFile">
 
 </member>
 <member name="">
@@ -405,6 +515,75 @@
 </summary>
 </member>
 <member name="T:Fake.DocuHelper">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:Fake.DynamicsNav.CloseAllNavProcesses(System.Boolean)">
+<summary>
+ Closes all running Dynamics NAV instances
+</summary>
+</member>
+<member name="M:Fake.DynamicsNav.OpenPage(System.String,System.String,System.String,System.String,System.Int32)">
+<summary>
+ Opens a page with the RTC client
+</summary>
+</member>
+<member name="M:Fake.DynamicsNav.CompileAll(Fake.DynamicsNav.DynamicsNavParams)">
+<summary>
+ Compiles all uncompiled objects in the Dynamics NAV client
+</summary>
+</member>
+<member name="M:Fake.DynamicsNav.CreateImportFile(System.String,System.Collections.Generic.IEnumerable{System.String})">
+<summary>
+ Creates an importfile from the given files
+</summary>
+</member>
+<member name="M:Fake.DynamicsNav.ImportFile(Fake.DynamicsNav.DynamicsNavParams,System.String)">
+<summary>
+ Imports the given txt or fob file into the Dynamics NAV client
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:Fake.DynamicsNav.createConnectionInfo(System.String,Fake.DynamicsNav.NavisionServerType,System.String,System.String)">
+<summary>
+ Creates the connection information to a Dynamics NAV instance
+</summary>
+</member>
+<member name="T:Fake.DynamicsNav">
 
 </member>
 <member name="">
@@ -1828,6 +2007,15 @@
 <member name="">
 
 </member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
 <member name="T:Fake.HttpListenerHelper">
 
 </member>
@@ -2176,25 +2364,34 @@
 <member name="">
 
 </member>
+<member name="M:Fake.MSBuildHelper.MSBuildWithDefaults(System.String)">
+<summary>
+ Builds the given project files or solution files in release mode to the default outputs.
+</summary>
+</member>
 <member name="M:Fake.MSBuildHelper.MSBuildRelease(System.String,System.String)">
 <summary>
- Builds the given project files and collects the output files
+ Builds the given project files or solution files and collects the output files
+ If the outputpath is null or empty then the project settings are used.
 </summary>
 </member>
 <member name="M:Fake.MSBuildHelper.MSBuildDebug(System.String,System.String)">
 <summary>
- Builds the given project files and collects the output files
+ Builds the given project files or solution files and collects the output files
+ If the outputpath is null or empty then the project settings are used.
 </summary>
 </member>
 <member name="M:Fake.MSBuildHelper.MSBuild(System.String,System.String,Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}})">
 <summary>
- Builds the given project files and collects the output files
+ Builds the given project files or solution files and collects the output files
+ If the outputpath is null or empty then the project settings are used.
 </summary>
 </member>
 <member name="M:Fake.MSBuildHelper.MSBuildWithProjectProperties(System.String,System.String,Microsoft.FSharp.Core.FSharpFunc{System.String,Microsoft.FSharp.Collections.FSharpList{System.Tuple{System.String,System.String}}},System.Collections.Generic.IEnumerable{System.String})">
 <summary>
  Builds the given project files and collects the output files.
  Properties are parameterized by project name.
+ If the outputpath is null or empty then the project settings are used.&gt;
 </summary>
 </member>
 <member name="M:Fake.MSBuildHelper.build(Microsoft.FSharp.Core.FSharpFunc{Fake.MSBuildHelper.MSBuildParams,Fake.MSBuildHelper.MSBuildParams},System.String)">
@@ -2615,10 +2812,35 @@
 <member name="">
 
 </member>
+<member name="">
+
+</member>
 <member name="M:Fake.NuGetHelper.NuGet(Microsoft.FSharp.Core.FSharpFunc{Fake.NuGetHelper.NuGetParams,Fake.NuGetHelper.NuGetParams},System.String)">
 <summary>
  Creates a new NuGet package   
 </summary>
+</member>
+<member name="M:Fake.NuGetHelper.NuGetPublish(Microsoft.FSharp.Core.FSharpFunc{Fake.NuGetHelper.NuGetParams,Fake.NuGetHelper.NuGetParams})">
+<summary>
+ Publishes a NuGet package to the nuget server
+</summary>
+</member>
+<member name="M:Fake.NuGetHelper.NuGetPack(Microsoft.FSharp.Core.FSharpFunc{Fake.NuGetHelper.NuGetParams,Fake.NuGetHelper.NuGetParams},System.String)">
+<summary>
+ Creates a new NuGet package based on the nuspecFile
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
 </member>
 <member name="">
 
@@ -2630,6 +2852,12 @@
 <summary>
  Gets the version no. for a given package in the deployments folder
 </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
 </member>
 <member name="">
 
@@ -2817,6 +3045,12 @@
 <summary>
  sets the environment Settings for the given startInfo
  existing values will be overrriden
+</summary>
+</member>
+<member name="M:Fake.ProcessHelper.ExecProcessElevated(System.String,System.String,System.TimeSpan)">
+<summary>
+Runs the given process in an elevated context
+returns the exit code
 </summary>
 </member>
 <member name="M:Fake.ProcessHelper.ExecProcess(Microsoft.FSharp.Core.FSharpFunc{System.Diagnostics.ProcessStartInfo,Microsoft.FSharp.Core.Unit},System.TimeSpan)">
@@ -3097,6 +3331,9 @@
 <summary>
  Returns all standard chars and digits.
 </summary>
+</member>
+<member name="">
+
 </member>
 <member name="M:Fake.StringHelper.isUmlaut(System.Char)">
 <summary>
@@ -3383,6 +3620,11 @@
  <summary>Writes a dependency graph.</summary>
  <param name="verbose">Whether to print verbose output or not.</param>
  <param name="target">The target for which the dependencies should be printed.</param>
+</member>
+<member name="M:Fake.TargetHelper.PrintTargets">
+<summary>
+ Prints all targets
+</summary>
 </member>
 <member name="M:Fake.TargetHelper.runFinalTargets">
 <summary>

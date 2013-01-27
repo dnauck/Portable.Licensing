@@ -1,6 +1,7 @@
 // include Fake lib
 #r @"Tools/FAKE/FakeLib.dll"
 open Fake
+open Fake.AssemblyInfoFile
 open System
 
 // build properties
@@ -42,20 +43,15 @@ Target "Clean" (fun _ ->
 )
 
 Target "CreateAssemblyInfo" (fun _ ->
-    AssemblyInfo 
-      (fun asm -> 
-        {asm with
-          CodeLanguage = CSharp;
-          AssemblyCompany = "Nauck IT KG";
-          AssemblyProduct = "Portable.Licensing";
-          AssemblyCopyright = String.Format("Copyright © 2012 - {0} Nauck IT KG", DateTime.Now.Year);
-          AssemblyTrademark = String.Empty;
-          AssemblyVersion = assemblyVersion;
-          AssemblyFileVersion = assemblyFileVersion;
-          AssemblyInformationalVersion = assemblyInformationalVersion;
-          OutputFileName = sourceDir @@ "CommonAssemblyInfo.cs"
-          }
-        )
+    CreateCSharpAssemblyInfo (sourceDir @@ "CommonAssemblyInfo.cs")
+        [
+        Attribute.Company "Nauck IT KG"
+        Attribute.Product "Portable.Licensing"
+        Attribute.Copyright (sprintf "Copyright © 2012 - %A Nauck IT KG" DateTime.Now.Year)
+        Attribute.Version assemblyVersion
+        Attribute.FileVersion assemblyFileVersion
+        Attribute.InformationalVersion assemblyInformationalVersion
+        ]
 )
 
 Target "Build" (fun _ ->
@@ -148,7 +144,7 @@ Target "PackageNuGetDistribution" (fun _ ->
 
 // Dependencies
 "Clean" 
-//  ==> "CreateAssemblyInfo"
+    ==> "CreateAssemblyInfo"
     ==> "Build"
     ==> "Test"
     ==> "MergeAssemblies"
