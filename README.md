@@ -37,7 +37,7 @@ Store the private key securely and distribute the public key with your product.
 
 Now we need something to generate licenses. This could be easily done with the *LicenseFactory*:
 
-    var license = LicenseFactory.New()  
+    var license = License.New()  
         .WithUniqueIdentifier(Guid.NewGuid())  
         .As(LicenseType.Trial)  
         .ExpiresAt(DateTime.Now.AddDays(30))  
@@ -55,6 +55,10 @@ Now you can take the license and save it to a file:
 
     File.WriteAllText("License.lic", license.ToString(), Encoding.UTF8);
 
+or
+
+    license.Save(xmlWriter);  
+
 
 ### Validate the license in your application ###
 
@@ -62,7 +66,7 @@ The easiest way to assert the license is in the entry point of your application.
 
 First load the license from a file or resource:
 
-    var license = LicenseFactory.Load(...);
+    var license = License.Load(...);
 
 Then you can assert the license:
 
