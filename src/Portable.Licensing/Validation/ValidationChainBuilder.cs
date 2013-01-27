@@ -33,9 +33,9 @@ namespace Portable.Licensing.Validation
     {
         private readonly Queue<ILicenseValidator> validators;
         private ILicenseValidator currentValidatorChain;
-        private readonly ILicense license;
+        private readonly License license;
 
-        public ValidationChainBuilder(ILicense license)
+        public ValidationChainBuilder(License license)
         {
             this.license = license;
             validators = new Queue<ILicenseValidator>();
@@ -55,7 +55,7 @@ namespace Portable.Licensing.Validation
             currentValidatorChain = null;
         }
 
-        public ICompleteValidationChain When(Predicate<ILicense> predicate)
+        public ICompleteValidationChain When(Predicate<License> predicate)
         {
             currentValidatorChain.ValidateWhen = predicate;
             return this;

@@ -59,8 +59,8 @@ namespace Portable.Licensing.Tests
         [Test]
         public void Can_Generate_And_Validate_Signature_With_Empty_License()
         {
-            var license = LicenseFactory.New()
-                                        .CreateAndSignWithPrivateKey(privateKey, passPhrase);
+            var license = License.New()
+                                 .CreateAndSignWithPrivateKey(privateKey, passPhrase);
 
             Assert.That(license, Is.Not.Null);
             Assert.That(license.Signature, Is.Not.Null);
@@ -95,14 +95,14 @@ namespace Portable.Licensing.Tests
                                           {"Maximum Transactions", "10000"}
                                       };
 
-            var license = LicenseFactory.New()
-                                        .WithUniqueIdentifier(licenseId)
-                                        .As(LicenseType.Standard)
-                                        .WithMaximumUtilization(10)
-                                        .WithProductFeatures(productFeatures)
-                                        .LicensedTo(customerName, customerEmail)
-                                        .ExpiresAt(expirationDate)
-                                        .CreateAndSignWithPrivateKey(privateKey, passPhrase);
+            var license = License.New()
+                                 .WithUniqueIdentifier(licenseId)
+                                 .As(LicenseType.Standard)
+                                 .WithMaximumUtilization(10)
+                                 .WithProductFeatures(productFeatures)
+                                 .LicensedTo(customerName, customerEmail)
+                                 .ExpiresAt(expirationDate)
+                                 .CreateAndSignWithPrivateKey(privateKey, passPhrase);
 
             Assert.That(license, Is.Not.Null);
             Assert.That(license.Signature, Is.Not.Null);
@@ -140,14 +140,14 @@ namespace Portable.Licensing.Tests
                                           {"Maximum Transactions", "10000"}
                                       };
 
-            var license = LicenseFactory.New()
-                                        .WithUniqueIdentifier(licenseId)
-                                        .As(LicenseType.Standard)
-                                        .WithMaximumUtilization(10)
-                                        .WithProductFeatures(productFeatures)
-                                        .LicensedTo(customerName, customerEmail)
-                                        .ExpiresAt(expirationDate)
-                                        .CreateAndSignWithPrivateKey(privateKey, passPhrase);
+            var license = License.New()
+                                 .WithUniqueIdentifier(licenseId)
+                                 .As(LicenseType.Standard)
+                                 .WithMaximumUtilization(10)
+                                 .WithProductFeatures(productFeatures)
+                                 .LicensedTo(customerName, customerEmail)
+                                 .ExpiresAt(expirationDate)
+                                 .CreateAndSignWithPrivateKey(privateKey, passPhrase);
 
             Assert.That(license, Is.Not.Null);
             Assert.That(license.Signature, Is.Not.Null);
@@ -164,7 +164,7 @@ namespace Portable.Licensing.Tests
             xmlElement.Element("Quantity").Value = "11"; // now we want to have 11 licenses
 
             // load license from manipulated xml
-            var hackedLicense = LicenseFactory.Load(xmlElement.ToString());
+            var hackedLicense = License.Load(xmlElement.ToString());
 
             // validate default values when not set
             Assert.That(hackedLicense.Id, Is.EqualTo(licenseId));

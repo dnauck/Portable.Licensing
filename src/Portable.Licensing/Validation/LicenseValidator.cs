@@ -29,21 +29,21 @@ using Portable.Licensing.Model;
 namespace Portable.Licensing.Validation
 {
     /// <summary>
-    /// Represents a <see cref="ILicense"/> validator.
+    /// Represents a <see cref="License"/> validator.
     /// </summary>
     internal class LicenseValidator : ILicenseValidator
     {
         /// <summary>
-        /// Gets or sets the predicate to determine if the <see cref="ILicense"/>
+        /// Gets or sets the predicate to determine if the <see cref="License"/>
         /// is valid.
         /// </summary>
-        public Predicate<ILicense> Validate { get; set; }
+        public Predicate<License> Validate { get; set; }
 
         /// <summary>
         /// Gets or sets the predicate to determine if the <see cref="ILicenseValidator"/>
         /// should be executed.
         /// </summary>
-        public Predicate<ILicense> ValidateWhen { get; set; }
+        public Predicate<License> ValidateWhen { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="IValidationFailure"/> result. The <see cref="IValidationFailure"/>

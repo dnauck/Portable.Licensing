@@ -46,9 +46,9 @@ namespace Portable.Licensing
         }
 
         /// <summary>
-        /// Sets the unique identifier of the <see cref="ILicense"/>.
+        /// Sets the unique identifier of the <see cref="License"/>.
         /// </summary>
-        /// <param name="id">The unique identifier of the <see cref="ILicense"/>.</param>
+        /// <param name="id">The unique identifier of the <see cref="License"/>.</param>
         /// <returns>The <see cref="ILicenseBuilder"/>.</returns>
         public ILicenseBuilder WithUniqueIdentifier(Guid id)
         {
@@ -57,9 +57,9 @@ namespace Portable.Licensing
         }
 
         /// <summary>
-        /// Sets the <see cref="LicenseType"/> of the <see cref="ILicense"/>.
+        /// Sets the <see cref="LicenseType"/> of the <see cref="License"/>.
         /// </summary>
-        /// <param name="type">The <see cref="LicenseType"/> of the <see cref="ILicense"/>.</param>
+        /// <param name="type">The <see cref="LicenseType"/> of the <see cref="License"/>.</param>
         /// <returns>The <see cref="ILicenseBuilder"/>.</returns>
         public ILicenseBuilder As(LicenseType type)
         {
@@ -68,9 +68,9 @@ namespace Portable.Licensing
         }
 
         /// <summary>
-        /// Sets the expiration date of the <see cref="ILicense"/>.
+        /// Sets the expiration date of the <see cref="License"/>.
         /// </summary>
-        /// <param name="date">The expiration date of the <see cref="ILicense"/>.</param>
+        /// <param name="date">The expiration date of the <see cref="License"/>.</param>
         /// <returns>The <see cref="ILicenseBuilder"/>.</returns>
         public ILicenseBuilder ExpiresAt(DateTime date)
         {
@@ -79,10 +79,10 @@ namespace Portable.Licensing
         }
 
         /// <summary>
-        /// Sets the maximum utilization of the <see cref="ILicense"/>.
+        /// Sets the maximum utilization of the <see cref="License"/>.
         /// This can be the quantity of developers for a "per-developer-license".
         /// </summary>
-        /// <param name="utilization">The maximum utilization of the <see cref="ILicense"/>.</param>
+        /// <param name="utilization">The maximum utilization of the <see cref="License"/>.</param>
         /// <returns>The <see cref="ILicenseBuilder"/>.</returns>
         public ILicenseBuilder WithMaximumUtilization(int utilization)
         {
@@ -91,7 +91,7 @@ namespace Portable.Licensing
         }
 
         /// <summary>
-        /// Sets the <see cref="ICustomer">license holder</see> of the <see cref="ILicense"/>.
+        /// Sets the <see cref="Customer">license holder</see> of the <see cref="License"/>.
         /// </summary>
         /// <param name="name">The name of the license holder.</param>
         /// <param name="email">The email of the license holder.</param>
@@ -104,9 +104,9 @@ namespace Portable.Licensing
         }
 
         /// <summary>
-        /// Sets the licensed product features of the <see cref="ILicense"/>.
+        /// Sets the licensed product features of the <see cref="License"/>.
         /// </summary>
-        /// <param name="productFeatures">The licensed product features of the <see cref="ILicense"/>.</param>
+        /// <param name="productFeatures">The licensed product features of the <see cref="License"/>.</param>
         /// <returns>The <see cref="ILicenseBuilder"/>.</returns>
         public ILicenseBuilder WithProductFeatures(IDictionary<string, string> productFeatures)
         {
@@ -115,13 +115,13 @@ namespace Portable.Licensing
         }
 
         /// <summary>
-        /// Create and sign a new <see cref="ILicense"/> with the specified
+        /// Create and sign a new <see cref="License"/> with the specified
         /// private encryption key.
         /// </summary>
         /// <param name="privateKey">The private encryption key for the signature.</param>
         /// <param name="passPhrase">The pass phrase to decrypt the private key.</param>
-        /// <returns>The signed <see cref="ILicense"/>.</returns>
-        public ILicense CreateAndSignWithPrivateKey(string privateKey, string passPhrase)
+        /// <returns>The signed <see cref="License"/>.</returns>
+        public License CreateAndSignWithPrivateKey(string privateKey, string passPhrase)
         {
             license.Sign(privateKey, passPhrase);
             return license;

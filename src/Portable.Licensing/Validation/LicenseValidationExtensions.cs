@@ -31,16 +31,16 @@ using Portable.Licensing.Model;
 namespace Portable.Licensing.Validation
 {
     /// <summary>
-    /// Extension methods for <see cref="ILicense"/> validation.
+    /// Extension methods for <see cref="License"/> validation.
     /// </summary>
     public static class LicenseValidationExtensions
     {
         /// <summary>
-        /// Starts the validation chain of the <see cref="ILicense"/>.
+        /// Starts the validation chain of the <see cref="License"/>.
         /// </summary>
-        /// <param name="license">The <see cref="ILicense"/> to validate.</param>
+        /// <param name="license">The <see cref="License"/> to validate.</param>
         /// <returns>An instance of <see cref="IStartValidationChain"/>.</returns>
-        public static IStartValidationChain Validate(this ILicense license)
+        public static IStartValidationChain Validate(this License license)
         {
             return new ValidationChainBuilder(license);
         }
@@ -66,7 +66,7 @@ namespace Portable.Licensing.Validation
 
         /// <summary>
         /// Check whether the product build date of the provided assemblies
-        /// exceeded the <see cref="ILicense.Expiration"/> date.
+        /// exceeded the <see cref="License.Expiration"/> date.
         /// </summary>
         /// <param name="validationChain">The current <see cref="IStartValidationChain"/>.</param>
         /// <param name="assemblies">The list of assemblies to check.</param>
@@ -91,7 +91,7 @@ namespace Portable.Licensing.Validation
         }
         
         /// <summary>
-        /// Validates the <see cref="ILicense.Signature"/>.
+        /// Validates the <see cref="License.Signature"/>.
         /// </summary>
         /// <param name="validationChain">The current <see cref="IStartValidationChain"/>.</param>
         /// <param name="publicKey">The public product key to validate the signature..</param>

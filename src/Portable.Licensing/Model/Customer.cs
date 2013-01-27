@@ -23,43 +23,40 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+using System.Xml.Linq;
+
 namespace Portable.Licensing.Model
 {
     /// <summary>
-    /// The customer of a <see cref="ILicense"/>.
+    /// The customer of a <see cref="License"/>.
     /// </summary>
-    internal class Customer : ModelBase, ICustomer
+    public class Customer : LicenseAttributes
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Customer"/> class.
-        /// </summary>
-        public Customer()
-            : base("Customer")
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Customer"/> class
-        /// with the specified content.
-        /// </summary>
-        /// <remarks>This constructor is only used for loading from XML.</remarks>
-        /// <param name="content">The initial content of this <see cref="Customer"/>.</param>
-        internal Customer(params object[] content)
-            : base("Customer", content)
+        internal Customer(XElement xmlData)
+            : base(xmlData, "CustomerData")
         {
         }
 
         /// <summary>
         /// Gets or sets the Name of this <see cref="ICustomer"/>.
         /// </summary>
-        public new string Name
+        public string Name
         {
             get { return GetTag("Name"); }
             set { SetTag("Name", value); }
         }
+        
+        /// <summary>
+        /// Gets or sets the Company of this <see cref="Customer"/>.
+        /// </summary>
+        public string Company
+        {
+            get { return GetTag("Company"); }
+            set { SetTag("Company", value); }
+        }
 
         /// <summary>
-        /// Gets or sets the Email of this <see cref="ICustomer"/>.
+        /// Gets or sets the Email of this <see cref="Customer"/>.
         /// </summary>
         public string Email
         {
