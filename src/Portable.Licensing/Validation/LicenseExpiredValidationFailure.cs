@@ -28,7 +28,7 @@ using Portable.Licensing.Model;
 namespace Portable.Licensing.Validation
 {
     /// <summary>
-    /// Represents a <see cref="ILicense"/> expired failure of a <see cref="ILicenseValidator"/>.
+    /// Represents a <see cref="License"/> expired failure of a <see cref="ILicenseValidator"/>.
     /// </summary>
     public class LicenseExpiredValidationFailure : IValidationFailure
     {

@@ -28,7 +28,7 @@ using Portable.Licensing.Model;
 namespace Portable.Licensing.Validation
 {
     /// <summary>
-    /// Represents a failure when the <see cref="ILicense.Signature"/> is invalid.
+    /// Represents a failure when the <see cref="License.Signature"/> is invalid.
     /// </summary>
     public class InvalidSignatureValidationFailure : IValidationFailure
     {
