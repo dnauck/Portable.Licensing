@@ -26,7 +26,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Portable.Licensing.Model;
 
 namespace Portable.Licensing.Validation
 {

@@ -25,7 +25,6 @@
 
 using System;
 using System.Collections.Generic;
-using Portable.Licensing.Model;
 
 namespace Portable.Licensing
 {

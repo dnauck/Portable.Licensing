@@ -26,7 +26,6 @@
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Generators;
 using Org.BouncyCastle.Security;
-using Portable.Licensing.Model;
 
 namespace Portable.Licensing.Security.Cryptography
 {

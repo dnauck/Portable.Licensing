@@ -33,7 +33,7 @@ using Org.BouncyCastle.Asn1.X9;
 using Org.BouncyCastle.Security;
 using Portable.Licensing.Security.Cryptography;
 
-namespace Portable.Licensing.Model
+namespace Portable.Licensing
 {
     /// <summary>
     /// A software license

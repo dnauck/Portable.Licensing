@@ -24,7 +24,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 using System;
-using Portable.Licensing.Model;
 
 namespace Portable.Licensing.Validation
 {

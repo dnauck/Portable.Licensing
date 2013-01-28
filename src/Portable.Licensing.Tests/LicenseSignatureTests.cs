@@ -28,7 +28,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Xml.Linq;
 using NUnit.Framework;
-using Portable.Licensing.Model;
 
 namespace Portable.Licensing.Tests
 {

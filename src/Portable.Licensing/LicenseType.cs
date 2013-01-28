@@ -23,45 +23,21 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-using System.Xml.Linq;
-
-namespace Portable.Licensing.Model
+namespace Portable.Licensing
 {
     /// <summary>
-    /// The customer of a <see cref="License"/>.
+    /// Defines the type of a <see cref="License"/>
     /// </summary>
-    public class Customer : LicenseAttributes
+    public enum LicenseType
     {
-        internal Customer(XElement xmlData)
-            : base(xmlData, "CustomerData")
-        {
-        }
+        /// <summary>
+        /// For trial or demo use
+        /// </summary>
+        Trial = 1,
 
         /// <summary>
-        /// Gets or sets the Name of this <see cref="ICustomer"/>.
+        /// Standard license
         /// </summary>
-        public string Name
-        {
-            get { return GetTag("Name"); }
-            set { SetTag("Name", value); }
-        }
-        
-        /// <summary>
-        /// Gets or sets the Company of this <see cref="Customer"/>.
-        /// </summary>
-        public string Company
-        {
-            get { return GetTag("Company"); }
-            set { SetTag("Company", value); }
-        }
-
-        /// <summary>
-        /// Gets or sets the Email of this <see cref="Customer"/>.
-        /// </summary>
-        public string Email
-        {
-            get { return GetTag("Email"); }
-            set { SetTag("Email", value); }
-        }
+        Standard = 2
     }
 }
