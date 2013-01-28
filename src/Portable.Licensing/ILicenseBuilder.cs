@@ -72,6 +72,22 @@ namespace Portable.Licensing
         ILicenseBuilder LicensedTo(string name, string email);
 
         /// <summary>
+        /// Sets the <see cref="Customer">license holder</see> of the <see cref="License"/>.
+        /// </summary>
+        /// <param name="name">The name of the license holder.</param>
+        /// <param name="email">The email of the license holder.</param>
+        /// <param name="configureCustomer">A delegate to configure the license holder.</param>
+        /// <returns>The <see cref="ILicenseBuilder"/>.</returns>
+        ILicenseBuilder LicensedTo(string name, string email, Action<Customer> configureCustomer);
+
+        /// <summary>
+        /// Sets the <see cref="Customer">license holder</see> of the <see cref="License"/>.
+        /// </summary>
+        /// <param name="configureCustomer">A delegate to configure the license holder.</param>
+        /// <returns>The <see cref="ILicenseBuilder"/>.</returns>
+        ILicenseBuilder LicensedTo(Action<Customer> configureCustomer);
+
+        /// <summary>
         /// Sets the licensed product features of the <see cref="License"/>.
         /// </summary>
         /// <param name="productFeatures">The licensed product features of the <see cref="License"/>.</param>
