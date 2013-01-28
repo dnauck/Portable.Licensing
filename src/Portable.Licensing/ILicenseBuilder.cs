@@ -95,6 +95,27 @@ namespace Portable.Licensing
         ILicenseBuilder WithProductFeatures(IDictionary<string, string> productFeatures);
 
         /// <summary>
+        /// Sets the licensed product features of the <see cref="License"/>.
+        /// </summary>
+        /// <param name="configureProductFeatures">A delegate to configure the product features.</param>
+        /// <returns>The <see cref="ILicenseBuilder"/>.</returns>
+        ILicenseBuilder WithProductFeatures(Action<LicenseAttributes> configureProductFeatures);
+
+        /// <summary>
+        /// Sets the licensed additional attributes of the <see cref="License"/>.
+        /// </summary>
+        /// <param name="additionalAttributes">The additional attributes of the <see cref="License"/>.</param>
+        /// <returns>The <see cref="ILicenseBuilder"/>.</returns>
+        ILicenseBuilder WithAdditionalAttributes(IDictionary<string, string> additionalAttributes);
+
+        /// <summary>
+        /// Sets the licensed additional attributes of the <see cref="License"/>.
+        /// </summary>
+        /// <param name="configureAdditionalAttributes">A delegate to configure the additional attributes.</param>
+        /// <returns>The <see cref="ILicenseBuilder"/>.</returns>
+        ILicenseBuilder WithAdditionalAttributes(Action<LicenseAttributes> configureAdditionalAttributes);
+
+        /// <summary>
         /// Create and sign a new <see cref="License"/> with the specified
         /// private encryption key.
         /// </summary>
