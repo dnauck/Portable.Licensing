@@ -10,7 +10,14 @@
     <!--<iconUrl></iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-      Portable.Licensing
+      Portable.Licensing is a portable solution which allows you to implement a licensing
+      component into your application or library.
+
+      FEATURES
+      - runs on .NET >= 4.0.3, Silverlight >= 4, Windows Phone >= 7.5, Windows Store Apps, Mono, XBox 360
+      - easy creation and validation of your licenses
+      - trial licenses
+      - cryptographic signed licenses, no alteration possible
     </description>
     <copyright>Copyright 2012-2013 Nauck IT KG</copyright>
     <tags>Portable.Licensing PCL Portable Licensing License Key KeyGenerator Protection Signing Nauck</tags>
