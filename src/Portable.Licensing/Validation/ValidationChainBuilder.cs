@@ -73,7 +73,7 @@ namespace Portable.Licensing.Validation
             while (validators.Count > 0)
             {
                 var validator = validators.Dequeue();
-                if (validator.ValidateWhen == null || !validator.ValidateWhen(license))
+                if (validator.ValidateWhen != null && !validator.ValidateWhen(license))
                     continue;
 
                 if (!validator.Validate(license))
