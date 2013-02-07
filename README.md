@@ -35,7 +35,7 @@ Search in the "Online" tab for "Portable.Licensing" and click "Install" on your 
 
 It is also possible to install the Portable.Licensing packages via the "NuGet Package Manager Console".
 
-Type the following to install the Footloose core library:
+Type the following to install the Portable.Licensing library:
 
     PM> Install-Package Portable.Licensing
 
