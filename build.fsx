@@ -26,8 +26,8 @@ let mergerExecutable = toolsDir @@ "ILRepack" @@ "ILRepack.exe"
 
 // common assembly info properties
 let assemblyVersion = getBuildParamOrDefault "assemblyVersion" "0.0.0.0"
-let assemblyFileVersion = getBuildParamOrDefault "assemblyFileVersion" "0.0.0.0"
-let assemblyInformationalVersion = getBuildParamOrDefault "assemblyInformationalVersion" "0.0.0-devel"
+let assemblyFileVersion = getBuildParamOrDefault "assemblyFileVersion" "0.0.1.0"
+let assemblyInformationalVersion = getBuildParamOrDefault "assemblyInformationalVersion" "0.0.1-devel"
 
 // Targets
 Target "All" DoNothing
