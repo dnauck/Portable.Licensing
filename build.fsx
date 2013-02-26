@@ -34,13 +34,11 @@ let assemblyInformationalVersion = getBuildParamOrDefault "assemblyInformational
 Target "All" DoNothing
 
 Target "Clean" (fun _ ->
-    let directoriesToClean =
-        !+ buildDir
-        ++ buildMetricsDir
-        ++ distributionDir
-        ++ publishDir |> Scan
-
-    CleanDirs directoriesToClean
+    CleanDirs [
+        buildDir 
+        buildMetricsDir
+        distributionDir
+        publishDir ]
 )
 
 Target "CreateAssemblyInfo" (fun _ ->
