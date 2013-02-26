@@ -148,7 +148,7 @@ Target "PackageXamarinDistribution" (fun _ ->
         {p with
             ToolPath = xpkgExecutable;
             Package = "Portable.Licensing";
-            Version = assemblyInformationalVersion;
+            Version = assemblyFileVersion;
             OutputPath = publishDir
             Project = "Portable.Licensing"
             Summary = "Portable.Licensing is a portable solution which allows you to implement a licensing component into your application or library."
