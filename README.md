@@ -118,4 +118,4 @@ Portable.Licensing is distributed using the MIT/X11 License.
 
 The latest release and documentation can be found on the Portable.Licensing project website:
 
-[https://github.com/dnauck/Portable.Licensing](https://github.com/dnauck/Portable.Licensing)
+[http://dev.nauck-it.de/projects/portable-licensing](http://dev.nauck-it.de/projects/portable-licensing)
