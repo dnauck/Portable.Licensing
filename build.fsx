@@ -159,6 +159,7 @@ Target "PackageXamarinDistribution" (fun _ ->
             GettingStarted = "GettingStarted.md"
             Icons = ["./Icons/Portable.Licensing_512x512.png"; "./Icons/Portable.Licensing_128x128.png"]
             Libraries = ["mobile", "./Distribution/lib/portable-net40+sl4+wp7+win8/Portable.Licensing.dll"]
+            Samples = ["Android Sample. Just a first test.", "./Samples/Android.Sample/Android.Sample.sln"]
         }
     )
 )
