@@ -105,7 +105,7 @@ Target "PreparePackaging" (fun _ ->
     CreateDir docsDir
 
     CopyFile docsDir "Readme.md"
-    CopyFile docsDir "LICENSE.txt"
+    CopyFile docsDir "LICENSE.md"
 
     let libsDir = distributionDir @@ "lib" @@ frameworkProfile
     CreateDir libsDir

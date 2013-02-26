@@ -28,7 +28,7 @@
   <files>
     <file src="Distribution\lib\portable-net40+sl4+wp7+win8\Portable.Licensing.dll" target="lib\portable-net40+sl4+wp7+win8\Portable.Licensing.dll" />
     <file src="Distribution\lib\portable-net40+sl4+wp7+win8\Portable.Licensing.XML" target="lib\portable-net40+sl4+wp7+win8\Portable.Licensing.XML" />
-    <file src="Distribution\Documentation\LICENSE.txt" target="LICENSE.txt" />
+    <file src="Distribution\Documentation\LICENSE.md" target="LICENSE.md" />
     <file src="Distribution\README.txt" target="README.txt" />
   </files>
 </package>
