@@ -57,7 +57,8 @@ namespace Portable.Licensing.Validation
 
             validator.FailureResult = new LicenseExpiredValidationFailure()
                                           {
-                                              Message = "Licensing for this product has expired!"
+                                              Message = "Licensing for this product has expired!",
+                                              HowToResolve = @"Your license is expired. Please contact your distributor/vendor to renew the license."
                                           };
 
             return validationChainBuilder;
@@ -83,7 +84,7 @@ namespace Portable.Licensing.Validation
             validator.FailureResult = new LicenseExpiredValidationFailure()
                                           {
                                               Message = "Licensing for this product has expired!",
-                                              HowToResolve = @"Your subscription has expired and the Product..."
+                                              HowToResolve = @"Your license is expired. Please contact your distributor/vendor to renew the license."
                                           };
 
             return validationChainBuilder;

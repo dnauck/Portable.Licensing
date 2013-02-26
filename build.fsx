@@ -23,23 +23,22 @@ let toolsDir = currentDirectory @@ "Tools"
 let nunitPath = toolsDir @@ "NUnit"
 let nugetExecutable = toolsDir @@ "NuGet" @@ "NuGet.exe"
 let mergerExecutable = toolsDir @@ "ILRepack" @@ "ILRepack.exe"
+let xpkgExecutable = toolsDir @@ "xpkg" @@ "xpkg.exe"
 
 // common assembly info properties
 let assemblyVersion = getBuildParamOrDefault "assemblyVersion" "0.0.0.0"
-let assemblyFileVersion = getBuildParamOrDefault "assemblyFileVersion" "0.0.1.0"
-let assemblyInformationalVersion = getBuildParamOrDefault "assemblyInformationalVersion" "0.0.1-devel"
+let assemblyFileVersion = getBuildParamOrDefault "assemblyFileVersion" "0.0.2.0"
+let assemblyInformationalVersion = getBuildParamOrDefault "assemblyInformationalVersion" "0.0.2-devel"
 
 // Targets
 Target "All" DoNothing
 
 Target "Clean" (fun _ ->
-    let directoriesToClean =
-        !+ buildDir
-        ++ buildMetricsDir
-        ++ distributionDir
-        ++ publishDir |> Scan
-
-    CleanDirs directoriesToClean
+    CleanDirs [
+        buildDir 
+        buildMetricsDir
+        distributionDir
+        publishDir ]
 )
 
 Target "CreateAssemblyInfo" (fun _ ->
@@ -105,7 +104,7 @@ Target "PreparePackaging" (fun _ ->
     CreateDir docsDir
 
     CopyFile docsDir "Readme.md"
-    CopyFile docsDir "LICENSE.txt"
+    CopyFile docsDir "LICENSE.md"
 
     let libsDir = distributionDir @@ "lib" @@ frameworkProfile
     CreateDir libsDir
@@ -142,6 +141,26 @@ Target "PackageNuGetDistribution" (fun _ ->
     DeleteFile (distributionDir @@ "Readme.txt")
 )
 
+Target "PackageXamarinDistribution" (fun _ ->
+    xpkgPack (fun p ->
+        {p with
+            ToolPath = xpkgExecutable;
+            Package = "Portable.Licensing";
+            Version = assemblyInformationalVersion;
+            OutputPath = publishDir
+            Project = "Portable.Licensing"
+            Summary = "Portable.Licensing is a portable solution which allows you to implement a licensing component into your application or library."
+            Publisher = "Nauck IT KG"
+            Website = "http://dev.nauck-it.de/projects/portable-licensing"
+            Details = "Readme.md"
+            License = "License.md"
+            GettingStarted = "GettingStarted.md"
+            Icons = ["./Icons/Portable.Licensing_512x512.png"; "./Icons/Portable.Licensing_128x128.png"]
+            Libraries = ["mobile", "./Distribution/lib/portable-net40+sl4+wp7+win8/Portable.Licensing.dll"]
+        }
+    )
+)
+
 // Dependencies
 "Clean" 
     ==> "CreateAssemblyInfo"
@@ -151,6 +170,7 @@ Target "PackageNuGetDistribution" (fun _ ->
     ==> "PreparePackaging"
     ==> "PackgaeZipDistribution"
     ==> "PackageNuGetDistribution"
+    ==> "PackageXamarinDistribution"
     ==> "All"
  
 // start build

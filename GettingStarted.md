@@ -1,28 +1,3 @@
-# Documentation #
-
-----------
-
-## About Portable.Licensing ##
-
-Portable.Licensing is a portable solution which allows you to implement a licensing component into your application or library.
-
-It is targeting the *Portable Class Library* and thus runs on nearly every .NET/Mono profile including Silverlight, Windows Phone, Windows Store App, MonoTouch, Mono for Android and XBox 360. Use it for your Desktop- (WinForms, WPF, etc.), Console-, Service-, Web- (ASP.NET, MVC, etc.) or even LightSwitch applications.
-
-Portable.Licensing is using the latest military strength, state-of-the-art cryptographic algorithm to ensure that your software and thus your intellectual property is protected.
-
-The Portable.Licensing library provides you all tools to create and validate licenses for your software.
-
-## Features ##
-
-- runs on .NET >= 4.0.3, Silverlight >= 4, Windows Phone >= 7.5, Windows Store Apps, Mono, XBox 360
-- easy creation and validation of your licenses
-- trial licenses
-- cryptographic signed licenses, no alteration possible
-
-
-----------
-
-
 ## Getting started ##
 
 ### License.Manager light ###
@@ -107,15 +82,3 @@ Then you can assert the license:
                                     .And()  
                                     .Signature(publicKey)  
                                     .AssertValidLicense();
-
-----------
-
-## License ##
-
-Portable.Licensing is distributed using the MIT/X11 License.
-
-## Further Information ##
-
-The latest release and documentation can be found on the Portable.Licensing project website:
-
-[http://dev.nauck-it.de/projects/portable-licensing](http://dev.nauck-it.de/projects/portable-licensing)
