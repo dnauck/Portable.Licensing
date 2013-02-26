@@ -6,6 +6,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{449E5271-6EE5-49BA-AB0E-370978ACD89C}"
 	ProjectSection(SolutionItems) = preProject
 		..\build.fsx = ..\build.fsx
+		..\GettingStarted.md = ..\GettingStarted.md
 		..\LICENSE.md = ..\LICENSE.md
 		..\Portable.Licensing.nuspec = ..\Portable.Licensing.nuspec
 		..\README.md = ..\README.md
