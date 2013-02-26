@@ -144,6 +144,9 @@ Target "PackageNuGetDistribution" (fun _ ->
 )
 
 Target "PackageXamarinDistribution" (fun _ ->
+    // temp. workaround of an xpkg bug
+    DeleteFile "./Distribution/lib/portable-net40+sl4+wp7+win8/Portable.Licensing.xml"
+
     xpkgPack (fun p ->
         {p with
             ToolPath = xpkgExecutable;
