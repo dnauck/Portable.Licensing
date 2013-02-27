@@ -4,26 +4,6 @@
 
 A reference implementation of a management application for products, customers and licenses is available here: [https://github.com/dnauck/License.Manager-Light](https://github.com/dnauck/License.Manager-Light)
 
-### Download ###
-
-[Portable.Licensing](https://nuget.org/packages/Portable.Licensing) is distributed with the popular NuGet Packaging Manager. This will make it easier for developers to get the Portable.Licensing distribution into their project.
-
-Go to the NuGet website for more details: [http://nuget.org/](http://nuget.org/)
-
-NuGet provides several ways to get Portable.Licensing into your Project. The easiest way is to right click your project references in Visual Studio and choose the menu item "Manage NuGet Packages".
-
-Search in the "Online" tab for "Portable.Licensing" and click "Install" on your selected packages.
-
-It is also possible to install the Portable.Licensing packages via the "NuGet Package Manager Console".
-
-Type the following to install the Portable.Licensing library:
-
-    PM> Install-Package Portable.Licensing
-
-Or use the following command to get a specific version:
-
-    PM> Install-Package Portable.Licensing -Version 1.0.0
-
 ### Create a private and public key for your product ###
 
 Portable.Licensing uses the Elliptic Curve Digital Signature Algorithmus (ECDSA) to ensure the license cannot be altered after creation.
