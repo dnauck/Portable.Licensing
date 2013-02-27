@@ -6,7 +6,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{449E5271-6EE5-49BA-AB0E-370978ACD89C}"
 	ProjectSection(SolutionItems) = preProject
 		..\build.fsx = ..\build.fsx
-		..\GettingStarted.md = ..\GettingStarted.md
 		..\LICENSE.md = ..\LICENSE.md
 		..\Portable.Licensing.nuspec = ..\Portable.Licensing.nuspec
 		..\README.md = ..\README.md
@@ -24,6 +23,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{A3D671EB-98E2-42BE-B8C0-27D040249B51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Android.Sample", "..\Samples\Android.Sample\Android.Sample\Android.Sample.csproj", "{C1669549-42DA-49E5-B88B-A6D0AD0A545F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xamarin", "Xamarin", "{BB17039C-1F40-476D-8F75-DA11576E4168}"
+	ProjectSection(SolutionItems) = preProject
+		..\Xamarin\Details.md = ..\Xamarin\Details.md
+		..\Xamarin\GettingStarted.md = ..\Xamarin\GettingStarted.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +51,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{BB17039C-1F40-476D-8F75-DA11576E4168} = {449E5271-6EE5-49BA-AB0E-370978ACD89C}
 		{C1669549-42DA-49E5-B88B-A6D0AD0A545F} = {A3D671EB-98E2-42BE-B8C0-27D040249B51}
 	EndGlobalSection
 EndGlobal
