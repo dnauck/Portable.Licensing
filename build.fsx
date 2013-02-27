@@ -154,7 +154,7 @@ Target "PackageXamarinDistribution" (fun _ ->
             Version = assemblyFileVersion;
             OutputPath = publishDir
             Project = "Portable.Licensing"
-            Summary = "Portable.Licensing is a portable solution which allows you to implement a licensing component into your application or library."
+            Summary = "Portable.Licensing is a cross platform software licensing framework which allows you to implement licensing into your application or library"
             Publisher = "Nauck IT KG"
             Website = "http://dev.nauck-it.de/projects/portable-licensing"
             Details = "./Xamarin/Details.md"
