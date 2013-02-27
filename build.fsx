@@ -157,10 +157,10 @@ Target "PackageXamarinDistribution" (fun _ ->
             Summary = "Portable.Licensing is a portable solution which allows you to implement a licensing component into your application or library."
             Publisher = "Nauck IT KG"
             Website = "http://dev.nauck-it.de/projects/portable-licensing"
-            Details = "Readme.md"
+            Details = "./Xamarin/Details.md"
             License = "License.md"
-            GettingStarted = "GettingStarted.md"
-            Icons = ["./Icons/Portable.Licensing_512x512.png"; "./Icons/Portable.Licensing_128x128.png"]
+            GettingStarted = "./Xamarin/GettingStarted.md"
+            Icons = ["./Xamarin/Portable.Licensing_512x512.png"; "./Xamarin/Portable.Licensing_128x128.png"]
             Libraries = ["mobile", "./Distribution/lib/portable-net40+sl4+wp7+win8/Portable.Licensing.dll"]
             Samples = ["Android Sample. Just a first test.", "./Samples/Android.Sample/Android.Sample.sln"]
         }
