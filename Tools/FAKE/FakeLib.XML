@@ -3521,7 +3521,7 @@ returns the exit code
  Appends a text if the value is not null
 </summary>
 </member>
-<member name="M:Fake.StringHelper.appendQuotedIfNotNull(System.Object,System.String)">
+<member name="M:Fake.StringHelper.appendQuotedIfNotNull(System.Object,System.String,System.Text.StringBuilder)">
 <summary>
  Appends a quoted text if the value is not null
 </summary>
