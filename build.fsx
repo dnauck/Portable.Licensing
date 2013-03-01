@@ -166,6 +166,16 @@ Target "PackageXamarinDistribution" (fun _ ->
                         "iOS Sample. A simple sample that validates a trial license.", "./Samples/iOS.Sample/iOS.Sample.sln"]
         }
     )
+
+    xpkgValidate (fun p ->
+        {p with
+            ToolPath = xpkgExecutable;
+            Package = "Portable.Licensing";
+            Version = assemblyFileVersion;
+            OutputPath = publishDir
+            Project = "Portable.Licensing"
+        }
+    )
 )
 
 // Dependencies
