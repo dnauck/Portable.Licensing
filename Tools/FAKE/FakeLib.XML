@@ -4640,6 +4640,11 @@ returns the exit code
 <member name="">
 
 </member>
+<member name="M:Fake.XpkgHelper.xpkgValidate(Microsoft.FSharp.Core.FSharpFunc{Fake.XpkgHelper.xpkgParams,Fake.XpkgHelper.xpkgParams})">
+<summary>
+ Validates a xpkg package based on the packageFileName
+</summary>
+</member>
 <member name="M:Fake.XpkgHelper.xpkgPack(Microsoft.FSharp.Core.FSharpFunc{Fake.XpkgHelper.xpkgParams,Fake.XpkgHelper.xpkgParams})">
 <summary>
  Creates a new xpkg package based on the packageFileName
