@@ -98,14 +98,14 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="Portable.Licensing">
-      <HintPath>..\Components\Portable.Licensing-0.0.2.0\lib\mobile\Portable.Licensing.dll</HintPath>
+      <HintPath>..\Components\Portable.Licensing-0.0.3.0\lib\mobile\Portable.Licensing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
     <XamarinComponentReference Include="Portable.Licensing">
       <InstallationInProgress>True</InstallationInProgress>
-      <Version>0.0.2.0</Version>
+      <Version>0.0.3.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
