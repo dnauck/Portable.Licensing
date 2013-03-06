@@ -91,6 +91,10 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
+    <XamarinComponent Include="Portable.Licensing">
+      <Visible>False</Visible>
+      <Version>0.0.3.0</Version>
+    </XamarinComponent>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
