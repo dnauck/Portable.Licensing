@@ -41,7 +41,7 @@
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="Portable.Licensing">
-      <HintPath>..\Components\Portable.Licensing-0.0.2.0\lib\mobile\Portable.Licensing.dll</HintPath>
+      <HintPath>..\Components\Portable.Licensing-0.0.3.0\lib\mobile\Portable.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -80,4 +80,11 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <XamarinComponentReference Include="Portable.Licensing">
+      <InstallationInProgress>True</InstallationInProgress>
+      <Version>0.0.3.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
 </Project>
