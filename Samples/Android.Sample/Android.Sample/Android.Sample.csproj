@@ -40,13 +40,13 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
-    <Reference Include="Portable.Licensing">
-      <HintPath>..\Components\Portable.Licensing-0.0.3.0\lib\mobile\Portable.Licensing.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="Portable.Licensing">
+      <HintPath>..\Components\Portable.Licensing-1.0.0.0\lib\mobile\Portable.Licensing.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -83,7 +83,7 @@
   <ItemGroup>
     <XamarinComponentReference Include="Portable.Licensing">
       <InstallationInProgress>True</InstallationInProgress>
-      <Version>0.0.3.0</Version>
+      <Version>1.0.0.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
