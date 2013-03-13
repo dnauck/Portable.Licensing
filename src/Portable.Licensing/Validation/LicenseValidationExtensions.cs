@@ -105,9 +105,7 @@ namespace Portable.Licensing.Validation
             validator.FailureResult = new InvalidSignatureValidationFailure()
                                           {
                                               Message = "License signature validation error!",
-                                              HowToResolve = @"The license signature and data does not match. 
-                                                                This usually happens when a license file is 
-                                                                corrupted or has been altered."
+                                              HowToResolve = @"The license signature and data does not match. This usually happens when a license file is corrupted or has been altered."
                                           };
 
             return validationChainBuilder;
