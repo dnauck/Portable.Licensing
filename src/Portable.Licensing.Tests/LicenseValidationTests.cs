@@ -129,6 +129,47 @@ namespace Portable.Licensing.Tests
         }
 
         [Test]
+        public void Can_Validate_CustomAssertion()
+        {
+            var publicKey = @"MIIBKjCB4wYHKoZIzj0CATCB1wIBATAsBgcqhkjOPQEBAiEA/////wAAAAEAAAAAAAAAAAAAAAD///////////////8wWwQg/////wAAAAEAAAAAAAAAAAAAAAD///////////////wEIFrGNdiqOpPns+u9VXaYhrxlHQawzFOw9jvOPD4n0mBLAxUAxJ02CIbnBJNqZnjhE50mt4GffpAEIQNrF9Hy4SxCR/i85uVjpEDydwN9gS3rM6D0oTlF2JjClgIhAP////8AAAAA//////////+85vqtpxeehPO5ysL8YyVRAgEBA0IABNVLQ1xKY80BFMgGXec++Vw7n8vvNrq32PaHuBiYMm0PEj2JoB7qSSWhfgcjxNVJsxqJ6gDQVWgl0r7LH4dr0KU=";
+            var licenseData = @"<License>
+                              <Id>77d4c193-6088-4c64-9663-ed7398ae8c1a</Id>
+                              <Type>Trial</Type>
+                              <Expiration>Thu, 31 Dec 2009 23:00:00 GMT</Expiration>
+                              <Quantity>1</Quantity>
+                              <Customer>
+                                <Name>John Doe</Name>
+                                <Email>john@doe.tld</Email>
+                              </Customer>
+                              <LicenseAttributes>
+                                <Attribute name=""Assembly Signature"">123456789</Attribute>
+                              </LicenseAttributes>
+                              <ProductFeatures>
+                                <Feature name=""Sales Module"">yes</Feature>
+                                <Feature name=""Workflow Module"">yes</Feature>
+                                <Feature name=""Maximum Transactions"">10000</Feature>
+                              </ProductFeatures>
+                              <Signature>MEUCIQCa6A7Cts5ex4rGHAPxiXpy+2ocZzTDSP7SsddopKUx5QIgHnqv0DjoOpc+K9wALqajxxvmLCRJAywCX5vDAjmWqr8=</Signature>
+                            </License>";
+
+            var license = License.Load(licenseData);
+
+            var validationResults = license
+                .Validate()
+                .AssertThat(lic => lic.ProductFeatures.Contains("Sales Module"),
+                            new GeneralValidationFailure {Message = "Sales Module not licensed!"})
+                .And()
+                .AssertThat(lic => lic.AdditionalAttributes.Get("Assembly Signature") == "123456789",
+                            new GeneralValidationFailure {Message = "Assembly Signature does not match!"})
+                .And()
+                .Signature(publicKey)
+                .AssertValidLicense().ToList();
+
+            Assert.That(validationResults, Is.Not.Null);
+            Assert.That(validationResults.Count(), Is.EqualTo(0));
+        }
+
+        [Test]
         public void Do_Not_Crash_On_Invalid_Data()
         {
             var publicKey = "1234";

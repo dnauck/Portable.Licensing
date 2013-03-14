@@ -89,7 +89,25 @@ namespace Portable.Licensing.Validation
 
             return validationChainBuilder;
         }
-        
+   
+        /// <summary>
+        /// Allows you to specify a custom assertion that validates the <see cref="License"/>.
+        /// </summary>
+        /// <param name="validationChain">The current <see cref="IStartValidationChain"/>.</param>
+        /// <param name="predicate">The predicate to determine of the <see cref="License"/> is valid.</param>
+        /// <param name="failure">The <see cref="IValidationFailure"/> will be returned to the application when the <see cref="ILicenseValidator"/> fails.</param>
+        /// <returns>An instance of <see cref="IStartValidationChain"/>.</returns>
+        public static IValidationChain AssertThat(this IStartValidationChain validationChain, Predicate<License> predicate, IValidationFailure failure)
+        {
+            var validationChainBuilder = (validationChain as ValidationChainBuilder);
+            var validator = validationChainBuilder.StartValidatorChain();
+
+            validator.Validate = predicate;
+            validator.FailureResult = failure;
+
+            return validationChainBuilder;
+        }
+
         /// <summary>
         /// Validates the <see cref="License.Signature"/>.
         /// </summary>
