@@ -29,8 +29,8 @@ let xpkgExecutable = toolsDir @@ "xpkg" @@ "xpkg.exe"
 
 // common assembly info properties
 let assemblyVersion = getBuildParamOrDefault "assemblyVersion" "1.0.0.0"
-let assemblyFileVersion = getBuildParamOrDefault "assemblyFileVersion" "1.0.0.0"
-let assemblyInformationalVersion = getBuildParamOrDefault "assemblyInformationalVersion" "1.0.0"
+let assemblyFileVersion = getBuildParamOrDefault "assemblyFileVersion" "1.1.0.0"
+let assemblyInformationalVersion = getBuildParamOrDefault "assemblyInformationalVersion" "1.1.0"
 
 // Targets
 Target "All" DoNothing
