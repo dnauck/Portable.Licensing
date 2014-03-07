@@ -16,7 +16,8 @@ First you need to create a new public/private key pair for your product:
     var publicKey = keyPair.ToPublicKeyString();
 
 Store the private key securely and distribute the public key with your product.
-
+Normally you create one key pair for each product, otherwise it is possible to use a license with all products using the same key pair.
+If you want your customer to buy a new license on each major release you can create a key pair for each release and product.
 
 ### Create the license generator ###
 
