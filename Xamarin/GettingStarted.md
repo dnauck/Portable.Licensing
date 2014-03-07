@@ -57,9 +57,25 @@ First load the license from a file or resource:
 
 Then you can assert the license:
 
+    using Portable.Licensing.Validation;
+
     var validationFailures = license.Validate()  
                                     .ExpirationDate()  
                                         .When(lic => lic.Type == LicenseType.Trial)  
                                     .And()  
                                     .Signature(publicKey)  
                                     .AssertValidLicense();
+
+Portable.Licesing will not throw any Exception and just return an enumeration of validation failures.
+
+Now you can iterate over possible validation failures:
+
+    foreach (var failure in validationFailures)
+         Console.WriteLine(failure.GetType().Name + ": " + failure.Message + " - " + failure.HowToResolve);
+
+Or simply check if there is any failure:
+
+    if (validationResults.Any())
+        // ...
+
+Make sure to call `validationFailures.ToList()` or `validationFailures.ToArray()` before using the result multiple times.
