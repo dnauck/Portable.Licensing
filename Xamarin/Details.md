@@ -22,6 +22,14 @@ It is targeting the *Portable Class Library* and thus runs on nearly every .NET/
 
 A reference implementation of a management application for products, customers and licenses is available here: [https://github.com/dnauck/License.Manager-Light](https://github.com/dnauck/License.Manager-Light)
 
+### License.Manager ###
+
+License.Manager is a web-based management solution for Portable.Licensing developed using AngularJS and ServiceStack.
+It enables you to manage customers, products and licenses and provides a
+REST service backend for integration with payment providers and 3rd party tools.
+
+License.Manager is available here: [https://github.com/dnauck/License.Manager](https://github.com/dnauck/License.Manager)
+
 ### Validate the license in your application ###
 
 The easiest way to assert the license is in the entry point of your application.
