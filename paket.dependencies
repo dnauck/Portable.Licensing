@@ -1,4 +1,5 @@
 source https://nuget.org/api/v2
 
 nuget FAKE
-nuget NUnit 2.6.2
+nuget NUnit
+nuget NuGet.CommandLine

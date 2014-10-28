@@ -1,5 +1,5 @@
 // include Fake lib
-#I @"Tools/FAKE/"
+#I @"packages/FAKE/tools"
 #r @"FakeLib.dll"
 
 open Fake
@@ -23,7 +23,7 @@ let solutionFile = sourceDir @@ "Portable.Licensing.sln"
 // tools path properties
 let toolsDir = currentDirectory @@ "Tools"
 let nunitPath = toolsDir @@ "NUnit"
-let nugetExecutable = toolsDir @@ "NuGet" @@ "NuGet.exe"
+let nugetExecutable = "packages" @@ "NuGet.CommandLine" @@ "tools" @@ "NuGet.exe"
 let mergerExecutable = toolsDir @@ "ILRepack" @@ "ILRepack.exe"
 let xpkgExecutable = toolsDir @@ "xpkg" @@ "xpkg.exe"
 
