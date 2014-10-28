@@ -1,4 +1,5 @@
 NUGET
   remote: https://nuget.org/api/v2
   specs:
+    FAKE (3.7.8)
     NUnit (2.6.2)
