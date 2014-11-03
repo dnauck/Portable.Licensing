@@ -40,9 +40,9 @@
     </dependencies>-->
   </metadata>
   <files>
-    <file src="Distribution\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\Portable.Licensing.dll" target="lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\Portable.Licensing.dll" />
-    <file src="Distribution\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\Portable.Licensing.XML" target="lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\Portable.Licensing.XML" />
-    <file src="Distribution\Documentation\LICENSE.md" target="LICENSE.md" />
-    <file src="Distribution\README.txt" target="README.txt" />
+    <file src="Distribution/lib/portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/Portable.Licensing.dll" target="lib/portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/Portable.Licensing.dll" />
+    <file src="Distribution/lib/portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/Portable.Licensing.XML" target="lib/portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/Portable.Licensing.XML" />
+    <file src="Distribution/Documentation/LICENSE.md" target="LICENSE.md" />
+    <file src="Distribution/README.txt" target="README.txt" />
   </files>
 </package>
