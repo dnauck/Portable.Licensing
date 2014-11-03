@@ -10,4 +10,4 @@ before_install:
   - mozroots --import --sync --quiet
 
 script: 
-  - ./build.sh All
+  - ./build.sh PackageNuGetDistribution

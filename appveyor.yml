@@ -1,7 +1,7 @@
 init:
   - git config --global core.autocrlf input
 build_script:
-  - cmd: build.bat All
+  - cmd: build.bat PackageNuGetDistribution
 test: off
 artifacts:
   - path: bin
