@@ -87,4 +87,5 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
+  <Import Project="..\..\..\.paket\paket.targets" />
 </Project>

@@ -1,6 +1,12 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{1E85F3C2-210B-43F2-9135-CC771B654196}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Portable.Licensing\paket.dependencies = ..\..\..\Portable.Licensing\paket.dependencies
+		..\..\..\Portable.Licensing\paket.lock = ..\..\..\Portable.Licensing\paket.lock
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOS.Sample", "iOS.Sample\iOS.Sample.csproj", "{2C8B478A-A9A6-4C6B-81C5-EE2923B7ECCA}"
 EndProject
 Global
