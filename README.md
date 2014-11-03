@@ -21,8 +21,15 @@ It is targeting the *Portable Class Library* and thus runs on nearly every .NET/
 - add additional key/value pair attributes to your licenses
 - easily extend the fluent validation API with extension methods
 
-----------
 
+## Build status
+
+| Platform | Status of last build |
+| :------ | :------: | :------: |
+| **Mono** | [![Travis build status](https://travis-ci.org/dnauck/Portable.Licensing.svg)](https://travis-ci.org/dnauck/Portable.Licensing) |
+| **Windows** | [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/ybwy7l9ooue3apqc/branch/devel?svg=true)](https://ci.appveyor.com/project/dnauck/portable-licensing) |
+
+----------
 
 ## Getting started ##
 
