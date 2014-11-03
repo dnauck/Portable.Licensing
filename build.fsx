@@ -7,7 +7,7 @@ open Fake.AssemblyInfoFile
 open System
 
 // build properties
-let frameworkProfile = @"portable-net40+sl4+wp7+win8"
+let frameworkProfile = @"portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1" // profile 147
 let buildTarget = getBuildParamOrDefault "buildTarget" "Build"
 let buildConfiguration = getBuildParamOrDefault "buildConfiguration" "Release"
 
@@ -157,7 +157,7 @@ Target "PackageXamarinDistribution" (fun _ ->
             License = "License.md"
             GettingStarted = "./Xamarin/GettingStarted.md"
             Icons = ["./Xamarin/Portable.Licensing_512x512.png"; "./Xamarin/Portable.Licensing_128x128.png"]
-            Libraries = ["mobile", "./Distribution/lib/portable-net40+sl4+wp7+win8/Portable.Licensing.dll"]
+            Libraries = ["mobile", "./Distribution/lib/" @@ frameworkProfile @@ "/Portable.Licensing.dll"]
             Samples = ["Android Sample. A simple sample that validates a trial license.", "./Samples/Android.Sample/Android.Sample.sln";
                         "iOS Sample. A simple sample that validates a trial license.", "./Samples/iOS.Sample/iOS.Sample.sln"]
         }
