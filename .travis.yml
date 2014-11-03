@@ -1,11 +1,11 @@
-language: c
+language: objective-c
 
-install:
-  - curl -sLo /tmp/mono.gpg http://download.mono-project.com/repo/xamarin.gpg
-  - sudo apt-key add /tmp/mono.gpg
-  - sudo sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' >> /etc/apt/sources.list.d/mono-xamarin.list"
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq mono-complete nuget mono-vbnc fsharp libgdiplus=2.10-3
+matrix:
+  - MONO_VERSION="3.10.0"
+
+before_install:
+  - wget "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg"
+  - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
   - mozroots --import --sync --quiet
 
 script: 
