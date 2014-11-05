@@ -12,7 +12,7 @@ It is targeting the *Portable Class Library* and thus runs on nearly every .NET/
 
 ## Features ##
 
-- runs on .NET >= 4.0.3, Silverlight >= 4, Windows Phone >= 7.5, Windows Store Apps, Mono, Xamarin.iOS, Xamarin.Android, Xamarin.Mac, XBox 360
+- runs on .NET >= 4.0.3, Silverlight 5, Windows Phone >= 8, Windows Store Apps, Mono, Xamarin.iOS, Xamarin.Android, Xamarin.Mac, XBox 360
 - easy creation and validation of your licenses
 - trial, standard and subscription licenses
 - cryptographic signed licenses, no alteration possible
