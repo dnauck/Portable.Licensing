@@ -137,7 +137,7 @@ Now you can iterate over possible validation failures:
 
 Or simply check if there is any failure:
 
-    if (validationResults.Any())
+    if (validationFailures.Any())
         // ...
 
 Make sure to call `validationFailures.ToList()` or `validationFailures.ToArray()` before using the result multiple times.
